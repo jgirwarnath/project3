@@ -9,7 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 /**
  *
- * @author Alexander Infante
+ * @author Alexander Infante 
  */
 public class Main {
 
