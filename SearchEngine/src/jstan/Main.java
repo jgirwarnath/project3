@@ -54,12 +54,13 @@ public class Main {
        JPanel SS    = new JPanel(new FlowLayout()); //for the indexed number
        
        //component configuration
-       frame.setSize(650, 500);
+       frame.setSize(750, 500);
        TITLE.setFont(new Font( "serif", Font.BOLD, 27));
        txtBox.setPreferredSize(new Dimension(400, 15));
        FIND.setFont(new Font("serif", Font.PLAIN, 15));
-       NORTH.setPreferredSize(new Dimension(200, 100));
-       maintenance.setSize(50, 20);
+     //  works on mac but not windows
+     //  NORTH.setPreferredSize(new Dimension(200, 100)); 
+
        
        //adding main panel to frame
        frame.add(main);
@@ -88,7 +89,7 @@ public class Main {
        SC.add(numOfIndex); 
        SE.add(about);
 
-       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//stops app on exit
+       frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);//stops app on exit
        frame.setVisible(true);
         
        }
