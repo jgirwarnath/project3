@@ -51,7 +51,8 @@ public class SearchEngine extends JPanel implements ActionListener {
        JRadioButton all    =  new JRadioButton("All of the search terms");
        JRadioButton any    =  new JRadioButton("Any of the search terms");
       
-       //buttonGroup
+       //adding radio buttons to a buttonGroup so that the user doesnt have
+       //to unclick them to move on
        ButtonGroup group = new ButtonGroup();
        group.add(all);
        group.add(exact);
@@ -107,7 +108,7 @@ public class SearchEngine extends JPanel implements ActionListener {
        add(main);
     }
      
-    
+    //for use on the next project
     public void actionPerformed(ActionEvent e) { 
            
        
