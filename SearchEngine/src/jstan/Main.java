@@ -1,4 +1,9 @@
-
+// This program is designed to provide a user with a comfortable
+// graphical user interface in which they can easly navigate.
+// It will allow searching of files, removing files and the
+// adding of files.
+//
+// Written 02/16/2015 by Thomas Schlicher, Tampa Florida USA
 package jstan;
 
 import javax.swing.*;
@@ -11,11 +16,11 @@ import javax.swing.SwingUtilities;
  */
 class Main extends JFrame
 {
+	//changin image located on JFrame
 	ImageIcon img = new ImageIcon("C:\\BoxGui\\face.jpg");
 	
 	public Main()
 	{
-	
             JFrame frame = new JFrame();
             frame.setIconImage(img.getImage());
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
