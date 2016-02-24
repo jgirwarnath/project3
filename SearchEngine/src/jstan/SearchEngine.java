@@ -1,8 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+// This class creates the first frame which allows users
+// to do "and" / "or" searching. The maintenace frame can
+// also be accessed from here. Box layout is used to design
+// the graphical user interface.
+//
+// Written 02/16/2015 by Thomas Schlicher, Tampa Florida USA
 package jstan;
 
 import javax.swing.*;
@@ -32,18 +33,23 @@ class SearchEngine extends JPanel implements ActionListener
 	public SearchEngine()
 	{
 		JPanel main = new JPanel();
+		//creates vertical box so horizontal boxes can be placed within
 		main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
 		
+		//creates a box
 		Box first = Box.createHorizontalBox();
+		//creatimg ImageIcon and re-sizing to fit label
 		ImageIcon imgIcon = new ImageIcon(new ImageIcon("C:\\BoxGui\\search.png").getImage().getScaledInstance(300, 80, Image.SCALE_DEFAULT));
 		titleLbl = new JLabel();
 		titleLbl.setIcon(imgIcon);
 		first.add(titleLbl);
 		main.add(first);
 		
+		// used as a spacer between boxes
 		main.add(Box.createVerticalStrut(10));
 		
 		Box second = Box.createHorizontalBox();
+		//glue is used to keep objects properly aligned
 		second.add(Box.createHorizontalGlue());
 		searchLbl = new JLabel("Search Terms: ");
 		second.add(searchLbl);
@@ -52,6 +58,7 @@ class SearchEngine extends JPanel implements ActionListener
 		second.add(schTxt);
 		second.add(Box.createHorizontalStrut(10));
 		schBtn = new JButton("Search");
+		//setting alt key
 		schBtn.setMnemonic(KeyEvent.VK_S);
 		//schBtn.setEnabled(false);
 		second.add(schBtn);
@@ -67,6 +74,7 @@ class SearchEngine extends JPanel implements ActionListener
 			allSearch.setMnemonic(KeyEvent.VK_A);
 			allSearch.setActionCommand(allString);
 			allSearch.setToolTipText("Pick to do an ' and ' search");
+			//this radiobutton will automatically be selected
 			allSearch.setSelected(true);
 		
 			group.add(anySearch = new JRadioButton(anyString));
@@ -128,6 +136,7 @@ class SearchEngine extends JPanel implements ActionListener
 		
 		add(main);
 		
+		//making use of an anonymous inner class 
 		 maintenance.addActionListener(new ActionListener() {
  
             public void actionPerformed(ActionEvent e)
