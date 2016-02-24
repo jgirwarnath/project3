@@ -1,8 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+// This class is used to create the second frame which will
+// allow the maintenance of the files. These files can be 
+// added, removed or rebuilt. Alt keys and tool tips have been 
+// used to allow the user access data easier while knowing what
+// something does.
+//
+// Written 02/16/2015 by Thomas Schlicher, Tampa Florida USA
 package jstan;
 
 import javax.swing.*;
@@ -23,6 +25,7 @@ public class Maintenance extends JPanel implements ActionListener
     
     public Maintenance()
     {
+    	//using Box Layout for the JFrame development
         JPanel main2 = new JPanel();
 	main2.setLayout(new BoxLayout(main2, BoxLayout.Y_AXIS));
 		
@@ -31,7 +34,8 @@ public class Maintenance extends JPanel implements ActionListener
             titleLbl2.setFont(new Font("SansSerif", Font.BOLD, 20));
             one.add(titleLbl2);
 	main2.add(one);
-		
+	
+	//strut is used to put spacing between the different boxes.	
 	main2.add(Box.createVerticalStrut(10));
 		
 	Box two = Box.createHorizontalBox();
@@ -40,9 +44,6 @@ public class Maintenance extends JPanel implements ActionListener
             fnLbl.setBorder(indexBorder);
             fnLbl.setMaximumSize(new Dimension(300, 50));
             two.add(fnLbl);
-            
-            //two.add(Box.createHorizontalGlue());
-            
             statusLbl = new JLabel("Status");
             statusLbl.setBorder(indexBorder);
             statusLbl.setMaximumSize(new Dimension(300, 50));
@@ -55,10 +56,13 @@ public class Maintenance extends JPanel implements ActionListener
             three.add(txt);
         main2.add(three);
         
+        //creating radiobuttons
         Box four = Box.createHorizontalBox();
             addBtn = new JButton("Add File");
+            //setting alt keys
             addBtn.setMnemonic(KeyEvent.VK_A);
             //schBtn.setEnabled(false);
+            //tool tip to let user know what this button does.
             addBtn.setToolTipText("Click to add a file");
             addBtn.addActionListener(this);
             four.add(addBtn);
@@ -70,6 +74,7 @@ public class Maintenance extends JPanel implements ActionListener
             rebuild.addActionListener(this);
             four.add(rebuild);
             
+            //glus is used to keep the positiong of items in the box balanced.
             four.add(Box.createHorizontalGlue());
             remove = new JButton("Remove files");
             remove.setMnemonic(KeyEvent.VK_R);
@@ -99,6 +104,7 @@ public class Maintenance extends JPanel implements ActionListener
         add(main2);
     }
     
+    //method that allows the action on button clicks
     public void actionPerformed(ActionEvent ae)
 	{
 		if(ae.getSource() == addBtn)
