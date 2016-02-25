@@ -23,6 +23,8 @@ public class Main {
         JTextArea txtBox =  new JTextArea();    
         JLabel     search   =  new JLabel("Enter your Search Terms: ");
         frame.setSize(650, 500);
+        frame.setLocationRelativeTo(null); //display in the center. 
+        //this wil be used for the sub window that opens. 
 
         JLabel  TITLE   =  new JLabel("Search Engine");
 
