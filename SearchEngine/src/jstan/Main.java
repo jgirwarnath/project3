@@ -71,11 +71,23 @@ public class Main {
             }
         });
         
-         about.addActionListener( new ActionListener() {
+        about.addActionListener( new ActionListener() {
             public void actionPerformed ( ActionEvent ae ) {
                 JOptionPane.showMessageDialog(null,"Copywright 2016, JSTAN", "JSTAN Search Engine", JOptionPane.INFORMATION_MESSAGE);
             }
         });
+        
+        JFrame     maintFrame  =  new JFrame("Search Engine Maitenence");
+        JTextArea maintTxtBox =  new JTextArea();    
+        JLabel     maintLabel   =  new JLabel("Search Engine - Index Maintenence ");
+        maintFrame.setSize(450, 300);
+        maintFrame.setLocationRelativeTo(frame); //display in the center. 
+        maintFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        maintFrame.setVisible(true);
+        //this wil be used for the sub window that opens. 
+
+        
+         
        
     }
     
