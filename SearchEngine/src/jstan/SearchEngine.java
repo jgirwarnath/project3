@@ -172,73 +172,95 @@ public class SearchEngine extends JFrame {
 
 
        
-  class Maintenance extends JPanel {
+   class Maintenance extends JPanel {
       
       
       public Maintenance(){
           
-          GridBagConstraints grid = new GridBagConstraints();
-         grid.insets = new Insets(10,5,5,0);
-          
-          
-          JPanel mainPan = new JPanel(new BorderLayout());
-          
-          JPanel pan0 = new JPanel(new GridBagLayout());
-//         
-          JPanel pan1 = new JPanel(new BorderLayout());
-         // pan1.setLayout(new BoxLayout(pan1, BoxLayout.X_AXIS));
-          
-          JPanel pan2 = new JPanel();
-          JPanel pan3 = new JPanel();
-          
-          
-          JLabel searchEngine = new JLabel("Search Engine - Index Maintenance");    
-          searchEngine.setFont(new Font("Serif", Font.BOLD, 24 ));
-       // N.add(title);
+  
+       
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        add(panel);
+        panel.add(Box.createHorizontalGlue());
+       // panel.add(Box.createHorizontalStrut(10));
+         //panel.add(Box.createRigidArea(new Dimension(10,0)));
         
-          JLabel fileName = new JLabel("                                                    File Name                                                                ");
-          fileName.setBorder(BorderFactory.createLineBorder(Color.black));
-          
-          JLabel status = new JLabel("                                     Status                                                       ");
-         status.setBorder(BorderFactory.createLineBorder(Color.black));
-          
-          JLabel numberOfFilesIndexed = new JLabel ("Number of files indexed");
-          JLabel version = new JLabel("Search Engine Version 1.0");
-          
-          JButton addFile = new JButton("Add File");
-          JButton rebuild = new JButton("Rebuild Out-of-date");
-          JButton remove = new JButton ("Remove Selected Files");
-          JButton resetWindow = new JButton("Reset Window");
-          
-          //north panel
-          pan0.add(searchEngine);
-          pan0.add(fileName);
-          pan0.add(status);
-          
-          
-        grid.gridx = 0;
-        grid.gridy = 0;
-        pan0.add(searchEngine, grid);
+        //Search Engine Title
+        JPanel panel0 = new JPanel();
+        panel0.setLayout(new BoxLayout(panel0, BoxLayout.LINE_AXIS));
+        //panel0.add(Box.createRigidArea(new Dimension(10,0)));
         
-        grid.gridx = 0;
-        grid.gridy = 1;
-        pan0.add(fileName, grid);
+        JPanel pan = new JPanel();
+     //pan.setLayout(new BoxLayout(pan, BoxLayout.PAGE_AXIS));
+       
         
-        grid.gridx = 1;
-        grid.gridy = 1;
-        pan0.add(status, grid);
         
-          pan1.add(addFile);
-//          pan1.add(rebuild);
-//          pan1.add(remove);
-//          pan1.add(resetWindow);
-          
-         // mainPan.add(pan0, BorderLayout.NORTH);
-          mainPan.add(pan1);
-         add(pan0);
-        //add(pan1, BorderLayout.SOUTH);
-//          add(pan2);
-        add(mainPan,BorderLayout.SOUTH);
-      }
-  }
+        
+        
+        
+        JPanel pans = new JPanel();
+        pans.setLayout(new BoxLayout(pans, BoxLayout.PAGE_AXIS));
+        pans.setAlignmentX(BOTTOM_ALIGNMENT);
+        
+   
+        JLabel search = new JLabel("Search Engine - Index Maintenance");
+        JLabel fileName = new JLabel("                                                File Name                                         ");
+        JLabel status = new JLabel("                   Status                                                                                   ");
+     
+        JLabel numberOf = new JLabel("Number of files indexed:0");
+        JLabel version = new JLabel("Search Engine version 1.1");
+        search.setFont(new Font( "serif", Font.BOLD, 30));
+        
+        fileName.setBorder(BorderFactory.createLineBorder(Color.black,2));
+        status.setBorder(BorderFactory.createLineBorder(Color.black,2));
+        
+       
+      JButton addFile = new JButton("Add File");
+      
+      JButton rebuild = new JButton("Rebuild Out-of-Date");
+      JButton remove = new JButton("Remove Selected Files");
+      JButton reset = new JButton("Reset Window");
 
+         search.setPreferredSize(new Dimension(170, 25));
+       
+      
+   
+  
+       panel0.add(search);
+      
+       
+       pan.add(fileName);
+       pan.add(status);
+      
+       pan.add(addFile);
+       pan.add(Box.createHorizontalGlue());
+      pan.add(Box.createRigidArea(new Dimension(55, 450)));
+       pan.add(rebuild);
+       pan.add(Box.createHorizontalGlue());
+       pan.add(Box.createRigidArea(new Dimension(55, 450)));
+       pan.add(remove);
+       
+      pan.add(Box.createHorizontalGlue());
+       // pan.add(Box.createVerticalStrut(155));
+      pan.add(Box.createRigidArea(new Dimension(30, 460)));
+//       
+        pan.add(reset);
+        pan.add(Box.createHorizontalGlue());
+        pan.add(Box.createRigidArea(new Dimension(100, 0)));
+        pan.add(numberOf);
+        pan.add(Box.createHorizontalGlue());
+        pan.add(Box.createRigidArea(new Dimension(100, 0)));
+        pan.add(version);
+    
+       panel.add(panel0);
+       panel.add(pan);
+       
+       
+
+}
+
+    
+}
+  
+   
