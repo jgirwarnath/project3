@@ -39,9 +39,10 @@ class SearchEngine extends JPanel implements ActionListener
 		//creates a box
 		Box first = Box.createHorizontalBox();
 		//creatimg ImageIcon and re-sizing to fit label
-		ImageIcon imgIcon = new ImageIcon(new ImageIcon("C:\\BoxGui\\search.png").getImage().getScaledInstance(300, 80, Image.SCALE_DEFAULT));
-		titleLbl = new JLabel();
-		titleLbl.setIcon(imgIcon);
+		//ImageIcon imgIcon = new ImageIcon(new ImageIcon("C:\\BoxGui\\search.png").getImage().getScaledInstance(300, 80, Image.SCALE_DEFAULT));
+		titleLbl = new JLabel("Search Engine");
+		titleLblsetFont(new Font("sanseriff", Font.Bold, 20);
+		//titleLbl.setIcon(imgIcon);
 		first.add(titleLbl);
 		main.add(first);
 		
