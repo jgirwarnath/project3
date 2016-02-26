@@ -1,266 +1,202 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+// This class creates the first frame which allows users
+// to do "and" / "or" searching. The maintenace frame can
+// also be accessed from here. Box layout is used to design
+// the graphical user interface.
+//
+// Written 02/16/2015 by Thomas Schlicher, Tampa Florida USA
 package jstan;
 
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
+import javax.swing.SwingUtilities;
+import java.util.Date;
+import javax.swing.BorderFactory;
+import javax.swing.border.Border;
+/**
+ *
+ * @author thomas
+ */
+class SearchEngine extends JPanel implements ActionListener
+{
+	private JLabel titleLbl, searchLbl, dateLbl, indexLbl;
+	private JTextField schTxt;
+	private JTextArea appTxt;
+	private JButton schBtn, maintenance, about;
+	private JRadioButton allSearch, anySearch, exactSearch;
+	private String allString = ("All of the Search Terms");
+	private String anyString = ("Any of the Search Terms");
+	private String exactString = ("Exact Phrase");
+	private Border dateBorder, indexBorder;
+	
+	
+	public SearchEngine()
+	{
+		JPanel main = new JPanel();
+		//creates vertical box so horizontal boxes can be placed within
+		main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
+		
+		//creates a box
+		Box first = Box.createHorizontalBox();
+		//creatimg ImageIcon and re-sizing to fit label
+		//ImageIcon imgIcon = new ImageIcon(new ImageIcon("C:\\BoxGui\\search.png").getImage().getScaledInstance(300, 80, Image.SCALE_DEFAULT));
+		titleLbl = new JLabel("Search Engine");
+		titleLblsetFont(new Font("sanseriff", Font.Bold, 20);
+		//titleLbl.setIcon(imgIcon);
+		first.add(titleLbl);
+		main.add(first);
+		
+		// used as a spacer between boxes
+		main.add(Box.createVerticalStrut(10));
+		
+		Box second = Box.createHorizontalBox();
+		//glue is used to keep objects properly aligned
+		second.add(Box.createHorizontalGlue());
+		searchLbl = new JLabel("Search Terms: ");
+		second.add(searchLbl);
+		second.add(Box.createHorizontalStrut(10));
+		schTxt = new JTextField();
+		second.add(schTxt);
+		second.add(Box.createHorizontalStrut(10));
+		schBtn = new JButton("Search");
+		//setting alt key
+		schBtn.setMnemonic(KeyEvent.VK_S);
+		//schBtn.setEnabled(false);
+		second.add(schBtn);
+		schBtn.setToolTipText("Click to search for terms");
+		schBtn.addActionListener(this);
+		second.add(Box.createHorizontalGlue());
+		main.add(second);
+		
+		Box tb = Box.createHorizontalBox();
+		ButtonGroup group = new ButtonGroup();
+			group.add(allSearch = new JRadioButton(allString));
+			tb.add(allSearch);
+			allSearch.setMnemonic(KeyEvent.VK_A);
+			allSearch.setActionCommand(allString);
+			allSearch.setToolTipText("Pick to do an ' and ' search");
+			//this radiobutton will automatically be selected
+			allSearch.setSelected(true);
+		
+			group.add(anySearch = new JRadioButton(anyString));
+			tb.add(anySearch);
+			anySearch.setMnemonic(KeyEvent.VK_N);
+			anySearch.setActionCommand(anyString);
+			anySearch.setToolTipText("Pick to do an ' or ' search");
+		
+			group.add(exactSearch = new JRadioButton(exactString));
+			tb.add(exactSearch);
+			exactSearch.setMnemonic(KeyEvent.VK_E);
+			exactSearch.setActionCommand(exactString);
+			exactSearch.setToolTipText("Pick to do an ' exact ' search");
+			
+			//allSearch.addActionListener(this);
+			//anySearch.addActionListener(this);
+			//exactSearch.addActionListener(this);
+			
+			main.add(tb);
+		
+		main.add(Box.createVerticalStrut(10));
+		
+		Box ftb = Box.createHorizontalBox();
+		appTxt = new JTextArea(15, 50);
+		ftb.add(appTxt);
+		main.add(ftb);
+		
+		main.add(Box.createVerticalStrut(10));
+		
+		Box sixth = Box.createHorizontalBox();
+		maintenance = new JButton("Maintenance");
+		maintenance.setToolTipText("Click to go to maintenance form");
+		sixth.add(maintenance);
+		sixth.add(Box.createHorizontalStrut(500));
+		maintenance.setMnemonic(KeyEvent.VK_M);
+		about = new JButton("About");
+		about.setToolTipText("Click to get information about search engine");
+		sixth.add(about);
+		about.setMnemonic(KeyEvent.VK_B);
+		main.add(sixth);
+		
+		main.add(Box.createVerticalStrut(5));
+		
+		Box seventh = Box.createHorizontalBox();
+		seventh.add(Box.createHorizontalGlue());
+		dateBorder = BorderFactory.createLoweredBevelBorder();
+		Date today = new Date();
+		dateLbl = new JLabel(today.toString());
+		dateLbl.setBorder(dateBorder);
+		seventh.add(dateLbl);
+		
+		seventh.add(Box.createHorizontalStrut(280));
+		indexBorder = BorderFactory.createLoweredBevelBorder();
+		indexLbl = new JLabel("Number of index's on file: ");
+		seventh.add(indexLbl);
+		indexLbl.setBorder(indexBorder);
+		seventh.add(Box.createHorizontalGlue());
+		main.add(seventh);
+		
+		add(main);
+		
+		//making use of an anonymous inner class 
+		 maintenance.addActionListener(new ActionListener() {
+ 
+            public void actionPerformed(ActionEvent e)
+            {
+				if(e.getSource() == maintenance)
+				{
+                                    JPanel p = new JPanel();
+                                    JFrame frame2 = new JFrame();
+                                    
+                                    p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
+		
+                                    Box first2 = Box.createHorizontalBox();
+                                    JLabel title2 = new JLabel("Maintenance Form");
+                                    title2.setFont(new Font("SansSerif", Font.BOLD, 20));
+                                    first2.add(title2);
+                                    p.add(first2);
+                
+                                    frame2.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					
+                                        frame2.add(p);
+					frame2.setSize(500, 300);
+					//frame.pack();
+					frame2.setLocationByPlatform(true);
+					frame2.setVisible(true);
+                                }
+            }
+        }); 
 
-public class SearchEngine extends JFrame {
-
-    public SearchEngine(){
-        
-        
-        
-         GridBagConstraints grid = new GridBagConstraints();
-         grid.insets = new Insets(10,5,5,0);
-        
-        
-      
-        JPanel main = new JPanel();
-        main.setLayout(new BoxLayout(main, BoxLayout.X_AXIS));
-        
-        //pan0 is inside the main panel
-        JPanel pan0 = new JPanel();
-        pan0.setLayout(new BoxLayout(pan0, BoxLayout.X_AXIS));
-        
-        //pan1 is inside the pan0 panel
-        JPanel pan1 = new JPanel();
-      
-         JPanel pan11 = new JPanel();
-         JButton search11 = new JButton("Javan 45454545 Search");
-      
-        
-        //CHECKING PAN 2
-        JPanel pan2 = new JPanel(new GridBagLayout());
-        // pan2.setLayout(new BoxLayout(pan2, BoxLayout.X_AXIS));
-        
-        JPanel pan3 = new JPanel();
-        pan3.setLayout(new BoxLayout(pan3, BoxLayout.X_AXIS));
-        
-        
-        JPanel pan4 = new JPanel();
-         pan4.setLayout(new BoxLayout(pan4, BoxLayout.X_AXIS));
-        
-        JPanel pan5 = new JPanel();
-       //pan5.setLayout(new BoxLayout(pan5, BoxLayout.X_AXIS));
-        
-        JPanel pan6 = new JPanel();
-       // pan6.setLayout(new BoxLayout(pan6, BoxLayout.X_AXIS));
-        JPanel pan7 = new JPanel();
-        pan7.setLayout(new BoxLayout(pan7, BoxLayout.X_AXIS));
-        
-       //Pan0 left corner maintenance
-       // pan0.add(Box.createGlue());
-        JButton maintenance = new JButton("Maintenance");
-         pan0.add(maintenance);
-          
-          //pan1 botton middle files
-        pan1.add(Box.createGlue()); 
-        JLabel files = new JLabel("Number of Files in the Indexed:");
-        pan1.add(files);
-        
-        //pan3 right corner about
-         pan3.add(Box.createGlue());
-        JButton about = new JButton("About");
-         pan3.add(about);
-         
-        
-        
-         
-         
-        JButton search1 = new JButton("Javan Search");
-        JLabel searchTerm = new JLabel("Search Engine");
-        JLabel searchEngine = new JLabel("Search Terms:");
-        JTextField text = new JTextField("                                                              ");
-       
-        
-        JRadioButton check = new JRadioButton("All of the Search Terms");
-         JRadioButton check1 = new JRadioButton("Any of the Search Terms");
-         JRadioButton check2 = new JRadioButton("Exact Phrase");
-         
-        pan2.add(searchEngine);
-        pan2.add(text);
-        pan2.add(search1);
-        pan2.add(check);
-        pan2.add(check1);
-        pan2.add(check2);
-        
-        
-        grid.gridx = 0;
-        grid.gridy = 0;
-        pan2.add(searchEngine, grid);
-        
-        grid.gridx = 1;
-        grid.gridy = 0;
-        pan2.add(text, grid);
-        
-        grid.gridx = 2;
-        grid.gridy = 0;
-        pan2.add(search1, grid);
-        
-        
-        
-        grid.gridx = 0;
-        grid.gridy = 1;
-        pan2.add(check, grid);
-        
-        grid.gridx = 1;
-        grid.gridy = 1;
-        pan2.add(check1, grid);
-        
-        grid.gridx = 2;
-        grid.gridy = 1;
-        pan2.add(check2, grid);
-        
-        
-       
-        
-        
-        
-        
-        
-        
-       
-        
-        pan5.add(searchTerm);
-        
-  
-        
- // main.add(pan0,BorderLayout.NORTH);
-        main.add(pan0);
-        main.add(pan4);
-        pan4.add(pan3,BorderLayout.CENTER);
-        pan0.add(pan1, BorderLayout.SOUTH);
-        //main.add(pan2);
-       // pan2.add(pan3, BorderLayout.CENTER);
-        
-        add(main, BorderLayout.SOUTH);
-        add(pan2);
-       //pan2.add(pan5,BorderLayout.WEST);
-        add(pan5,BorderLayout.NORTH);
-      
-    }
-    
-    public static void main(String[] args) {
-        
-        Maintenance me = new Maintenance();
-        JFrame fr = new JFrame();
-        fr.add(me);
-       fr.setTitle("Javans Search Engine Maintenance");
-       fr.setSize(700,600);
-       fr.setVisible(true);
-    //  fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        
-        
-        SearchEngine frame = new SearchEngine();
-        frame.setTitle("Javans Search Engine ");
-        frame.setSize(600,600);
-        frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        
-    }
-    
+		 about.addActionListener(new ActionListener() {
+ 
+            public void actionPerformed(ActionEvent a)
+            {
+                if(a.getSource() == about)
+				{
+					 JOptionPane.showMessageDialog(null, "About Form soon to come");
+				}
+            }
+        });      
+			
+	}
+	
+	public void actionPerformed(ActionEvent ae)
+	{
+		if(ae.getSource() == schBtn)
+		{
+			if(allSearch.isSelected())
+			{
+				JOptionPane.showMessageDialog(null, "all search");
+			}
+			else if(anySearch.isSelected())
+			{
+				JOptionPane.showMessageDialog(null, "any search");
+			}
+			else if(exactSearch.isSelected())
+			{
+				JOptionPane.showMessageDialog(null, "exact search");
+			}
+		}
+				
+	}
 }
 
-
-
-
-       
-   class Maintenance extends JPanel {
-      
-      
-      public Maintenance(){
-          
-  
-       
-        JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        add(panel);
-        panel.add(Box.createHorizontalGlue());
-       // panel.add(Box.createHorizontalStrut(10));
-         //panel.add(Box.createRigidArea(new Dimension(10,0)));
-        
-        //Search Engine Title
-        JPanel panel0 = new JPanel();
-        panel0.setLayout(new BoxLayout(panel0, BoxLayout.LINE_AXIS));
-        //panel0.add(Box.createRigidArea(new Dimension(10,0)));
-        
-        JPanel pan = new JPanel();
-     //pan.setLayout(new BoxLayout(pan, BoxLayout.PAGE_AXIS));
-       
-        
-        
-        
-        
-        
-        JPanel pans = new JPanel();
-        pans.setLayout(new BoxLayout(pans, BoxLayout.PAGE_AXIS));
-        pans.setAlignmentX(BOTTOM_ALIGNMENT);
-        
-   
-        JLabel search = new JLabel("Search Engine - Index Maintenance");
-        JLabel fileName = new JLabel("                                                File Name                                         ");
-        JLabel status = new JLabel("                   Status                                                                                   ");
-     
-        JLabel numberOf = new JLabel("Number of files indexed:0");
-        JLabel version = new JLabel("Search Engine version 1.1");
-        search.setFont(new Font( "serif", Font.BOLD, 30));
-        
-        fileName.setBorder(BorderFactory.createLineBorder(Color.black,2));
-        status.setBorder(BorderFactory.createLineBorder(Color.black,2));
-        
-       
-      JButton addFile = new JButton("Add File");
-      
-      JButton rebuild = new JButton("Rebuild Out-of-Date");
-      JButton remove = new JButton("Remove Selected Files");
-      JButton reset = new JButton("Reset Window");
-
-         search.setPreferredSize(new Dimension(170, 25));
-       
-      
-   
-  
-       panel0.add(search);
-      
-       
-       pan.add(fileName);
-       pan.add(status);
-      
-       pan.add(addFile);
-       pan.add(Box.createHorizontalGlue());
-      pan.add(Box.createRigidArea(new Dimension(55, 450)));
-       pan.add(rebuild);
-       pan.add(Box.createHorizontalGlue());
-       pan.add(Box.createRigidArea(new Dimension(55, 450)));
-       pan.add(remove);
-       
-      pan.add(Box.createHorizontalGlue());
-       // pan.add(Box.createVerticalStrut(155));
-      pan.add(Box.createRigidArea(new Dimension(30, 460)));
-//       
-        pan.add(reset);
-        pan.add(Box.createHorizontalGlue());
-        pan.add(Box.createRigidArea(new Dimension(100, 0)));
-        pan.add(numberOf);
-        pan.add(Box.createHorizontalGlue());
-        pan.add(Box.createRigidArea(new Dimension(100, 0)));
-        pan.add(version);
-    
-       panel.add(panel0);
-       panel.add(pan);
-       
-       
-
-}
-
-    
-}
-  
-   
