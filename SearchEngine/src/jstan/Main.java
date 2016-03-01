@@ -7,8 +7,6 @@
 package jstan;
 
 import javax.swing.*;
-import java.awt.event.*;
-import java.awt.*;
 import javax.swing.SwingUtilities;
 /**
  *
@@ -16,7 +14,7 @@ import javax.swing.SwingUtilities;
  */
 class Main extends JFrame
 {
-	//changin image located on JFrame
+	//changing image located on JFrame
 	ImageIcon img = new ImageIcon("C:\\BoxGui\\face.jpg");
 	
 	public Main()
@@ -27,7 +25,7 @@ class Main extends JFrame
             SearchEngine se = new SearchEngine();
             frame.add(se);
             frame.setSize(700, 500);
-            //frame.pack();
+            frame.pack();
             frame.setLocationByPlatform(true);
             frame.setVisible(true);
             
@@ -37,7 +35,7 @@ class Main extends JFrame
             Maintenance me = new Maintenance();
             frame2.add(me);
             frame2.setSize(600, 440);
-            //frame.pack();
+            frame.pack();
             frame2.setLocationByPlatform(true);
             frame2.setVisible(true);
             
@@ -46,12 +44,8 @@ class Main extends JFrame
         
     public static void main(String[] args) 
 	{
-        SwingUtilities.invokeLater(new Runnable() 
-		{
-            public void run() 
-			{
-				Main mm = new Main();
-            }
+        SwingUtilities.invokeLater(() -> {
+            Main mm = new Main();
         });
     }
 }
