@@ -23,9 +23,11 @@ public class Maintenance extends JPanel implements ActionListener
     private final JLabel titleLbl2, fnLbl, statusLbl, versionLbl, indxLbl;
     //private final JTextArea txt;
     private JTable table;
+    String index = "Indexed";
     private final JButton addBtn, rebuild, remove, reset;
     private final Border indexBorder;
     private String file = "";
+    
     
     public Maintenance()
     {
@@ -113,8 +115,7 @@ public class Maintenance extends JPanel implements ActionListener
     //method that allows the action on button clicks
     @Override
     public void actionPerformed(ActionEvent ae)
-	{
-            String index = "Indexed";
+	{   
 		if(ae.getSource() == addBtn)
 		{
                     JFileChooser fileChooser = new JFileChooser();
@@ -122,13 +123,14 @@ public class Maintenance extends JPanel implements ActionListener
                     int result = fileChooser.showOpenDialog(this);
                     if (result == JFileChooser.APPROVE_OPTION)
                     {
-                        file = fileChooser.getSelectedFile().getAbsolutePath();
+                        File selectedFile = fileChooser.getSelectedFile();                  
                         DefaultTableModel dtm = (DefaultTableModel) table.getModel();
-                        Vector v = new Vector();
-                        v.add(file);
-                        v.add(index);
-                        dtm.addRow(v);
-                        //System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+                        System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+                       // Vector v = new Vector();
+                        //v.add(file);
+                        //v.add(index);
+                        dtm.addRow(new Object[]{selectedFile.getAbsoluteFile(), index});
+                        
                         //table.append(selectedFile.getName() + "." + "\t\t" + "Indexed" + "\n");
          
                     }
