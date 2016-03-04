@@ -10,6 +10,7 @@ package jstan;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
+import java.io.File;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 /**
@@ -18,10 +19,10 @@ import javax.swing.border.Border;
  */
 public class Maintenance extends JPanel implements ActionListener
 {
-    private JLabel titleLbl2, fnLbl, dateLbl, statusLbl, versionLbl, indxLbl;
-    private JTextArea txt;
-    private JButton addBtn, rebuild, remove, reset;
-    private Border dateBorder, indexBorder;
+    private final JLabel titleLbl2, fnLbl, statusLbl, versionLbl, indxLbl;
+    private final JTextArea txt;
+    private final JButton addBtn, rebuild, remove, reset;
+    private final Border indexBorder;
     
     public Maintenance()
     {
@@ -105,11 +106,20 @@ public class Maintenance extends JPanel implements ActionListener
     }
     
     //method that allows the action on button clicks
+    @Override
     public void actionPerformed(ActionEvent ae)
 	{
 		if(ae.getSource() == addBtn)
 		{
-                    JOptionPane.showMessageDialog(null, "This button will add files");
+                    JFileChooser fileChooser = new JFileChooser();
+                    fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+                    int result = fileChooser.showOpenDialog(this);
+                    if (result == JFileChooser.APPROVE_OPTION)
+                    {
+                        File selectedFile = fileChooser.getSelectedFile();
+                         System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+                        txt.append(selectedFile.getName() + "." + "\n");
+                    }
 		}
                 else if(ae.getSource() == rebuild)
                 {
