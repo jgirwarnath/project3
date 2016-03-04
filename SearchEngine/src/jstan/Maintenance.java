@@ -54,6 +54,7 @@ public class Maintenance extends JPanel implements ActionListener
         Box three = Box.createHorizontalBox();
             txt = new JTextArea(15, 52);
             txt.setBorder(indexBorder);
+            txt.setEditable(false);
             three.add(txt);
         main2.add(three);
         
@@ -118,7 +119,7 @@ public class Maintenance extends JPanel implements ActionListener
                     {
                         File selectedFile = fileChooser.getSelectedFile();
                          System.out.println("Selected file: " + selectedFile.getAbsolutePath());
-                        txt.append(selectedFile.getName() + "." + "\n");
+                        txt.append(selectedFile.getName() + "." + "\t\t" + "Indexed" + "\n");
                     }
 		}
                 else if(ae.getSource() == rebuild)
