@@ -6,10 +6,11 @@
 //
 // Written 02/16/2015 by Thomas Schlicher, Tampa Florida USA
 package jstan;
-
+import javax.swing.table.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
+import java.util.*;
 import java.io.File;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
@@ -20,9 +21,11 @@ import javax.swing.border.Border;
 public class Maintenance extends JPanel implements ActionListener
 {
     private final JLabel titleLbl2, fnLbl, statusLbl, versionLbl, indxLbl;
-    private final JTextArea txt;
+    //private final JTextArea txt;
+    private JTable table;
     private final JButton addBtn, rebuild, remove, reset;
     private final Border indexBorder;
+    private String file = "";
     
     public Maintenance()
     {
@@ -52,10 +55,11 @@ public class Maintenance extends JPanel implements ActionListener
         main2.add(two);
         
         Box three = Box.createHorizontalBox();
-            txt = new JTextArea(15, 52);
-            txt.setBorder(indexBorder);
-            txt.setEditable(false);
-            three.add(txt);
+            table = new JTable(10, 2);
+            //txt = new JTextArea(15, 52);
+            //txt.setBorder(indexBorder);
+            //txt.setEditable(false);
+            three.add(table);
         main2.add(three);
         
         //creating radiobuttons
@@ -110,6 +114,7 @@ public class Maintenance extends JPanel implements ActionListener
     @Override
     public void actionPerformed(ActionEvent ae)
 	{
+            String index = "Indexed";
 		if(ae.getSource() == addBtn)
 		{
                     JFileChooser fileChooser = new JFileChooser();
@@ -117,9 +122,15 @@ public class Maintenance extends JPanel implements ActionListener
                     int result = fileChooser.showOpenDialog(this);
                     if (result == JFileChooser.APPROVE_OPTION)
                     {
-                        File selectedFile = fileChooser.getSelectedFile();
-                         System.out.println("Selected file: " + selectedFile.getAbsolutePath());
-                        txt.append(selectedFile.getName() + "." + "\t\t" + "Indexed" + "\n");
+                        file = fileChooser.getSelectedFile().getAbsolutePath();
+                        DefaultTableModel dtm = (DefaultTableModel) table.getModel();
+                        Vector v = new Vector();
+                        v.add(file);
+                        v.add(index);
+                        dtm.addRow(v);
+                        //System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+                        //table.append(selectedFile.getName() + "." + "\t\t" + "Indexed" + "\n");
+         
                     }
 		}
                 else if(ae.getSource() == rebuild)
