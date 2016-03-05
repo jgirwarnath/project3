@@ -145,7 +145,9 @@ public class Maintenance extends JPanel implements ActionListener
                 }
                 else if(ae.getSource() == reset)
                 {
-                    JOptionPane.showMessageDialog(null, "This button will reset the window position");
+                    //JOptionPane.showMessageDialog(null, "This button will reset the window position
+                    //Main mFrame = new Main();
+                   //mFrame.reset();
                 }
 	}
 }
