@@ -20,12 +20,13 @@ import javax.swing.border.Border;
  */
 public class Maintenance extends JPanel implements ActionListener
 {
-    private final JLabel titleLbl2, fnLbl, statusLbl, versionLbl, indxLbl;
+    private final JLabel titleLbl2, versionLbl, indxLbl;
+    // fnLbl, statusLbl,
     //private final JTextArea txt;
     private JTable table;
     String index = "Indexed";
     private final JButton addBtn, rebuild, remove, reset;
-    private final Border indexBorder;
+    //private final Border indexBorder;
     private String file = "";
     
     
@@ -43,25 +44,26 @@ public class Maintenance extends JPanel implements ActionListener
 	
 	//strut is used to put spacing between the different boxes.	
 	main2.add(Box.createVerticalStrut(10));
-		
-	Box two = Box.createHorizontalBox();
-            fnLbl = new JLabel("File Name");
-            indexBorder = BorderFactory.createLineBorder(Color.black);
-            fnLbl.setBorder(indexBorder);
-            fnLbl.setMaximumSize(new Dimension(300, 50));
-            two.add(fnLbl);
-            statusLbl = new JLabel("Status");
-            statusLbl.setBorder(indexBorder);
-            statusLbl.setMaximumSize(new Dimension(300, 50));
-            two.add(statusLbl);
-        main2.add(two);
         
         Box three = Box.createHorizontalBox();
-            table = new JTable(10, 2);
+            table = new JTable(0, 2);
+            JTableHeader th = table.getTableHeader();
+            TableColumnModel tcm = th.getColumnModel();
+            TableColumn tc = tcm.getColumn(0);
+            TableColumn tc2 = tcm.getColumn(1);
+            tc.setHeaderValue("File Name");
+            tc2.setHeaderValue("Status");
+            th.repaint();
+            //table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+            //TableColumn col = table.getColumnModel().getColumn(0);
+            //int width = 100;
+            //col.setPreferredWidth(width);
             //txt = new JTextArea(15, 52);
             //txt.setBorder(indexBorder);
             //txt.setEditable(false);
-            three.add(table);
+            JScrollPane sp = new JScrollPane(table);
+            sp.setPreferredSize(new Dimension(580, 225));
+            three.add(sp);
         main2.add(three);
         
         //creating radiobuttons
