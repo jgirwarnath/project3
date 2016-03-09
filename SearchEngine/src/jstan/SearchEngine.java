@@ -27,10 +27,35 @@ class SearchEngine extends JPanel implements ActionListener
 	private final String anyString = ("Any of the Search Terms");
 	private final String exactString = ("Exact Phrase");
 	private final Border dateBorder, indexBorder;
+        
+         //about button components
+        private final String Authors = "<html> "
+                                 + "<strong>Authors:</strong> <br>"
+                                 + "<table border=\"1\" style=\"width:100%\">"
+                                 + "  <tr>"
+                                 + "     <td>Jonathan Girwar-Nath, Saurel Cerome "
+                                 + "  </tr>"
+                                 + "  <tr>"
+                                 + "     <td>Thomas Sclichler, Alexander Infante "
+                                 + "  </tr>"
+                                 + "</table><br>"
+                                 + "<strong>Version:</strong> 1.1 <br>" 
+                                 + "<strong>Description:</strong>  This program is to search a local drive<br>"
+                                 + "for a specific file and then index the files contents."
+                                 + "</html>";
+
+        private final ImageIcon icon;
+        
+
+    public static int getABORT() {
+        return ABORT;
+    }
+        
 	
 	
 	public SearchEngine()
 	{
+        
 		JPanel main = new JPanel();
 		//creates vertical box so horizontal boxes can be placed within
 		main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
@@ -114,6 +139,9 @@ class SearchEngine extends JPanel implements ActionListener
 		about.setToolTipText("Click to get information about search engine");
 		sixth.add(about);
 		about.setMnemonic(KeyEvent.VK_B);
+                
+                //adding icon to the about button
+                this.icon = new ImageIcon(SearchEngine.class.getResource("/resources/about image"));
 		main.add(sixth);
 		
 		main.add(Box.createVerticalStrut(25));
@@ -140,14 +168,16 @@ class SearchEngine extends JPanel implements ActionListener
 		 maintenance.addActionListener((ActionEvent e) -> {
                      if(e.getSource() == maintenance)
                      {
-                         Main.maintenanceFrame.setVisible(true);
+                         Main.frame.setVisible(true);
                      }
                 }); 
 
 		 about.addActionListener((ActionEvent a) -> {
                      if(a.getSource() == about)
                      {
-                         JOptionPane.showMessageDialog(null, "About Form soon to come");
+                         
+                           JOptionPane.showMessageDialog(null,  Authors, "About", JOptionPane.INFORMATION_MESSAGE, icon);
+
                      }
                 });      
 			
