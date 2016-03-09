@@ -16,10 +16,12 @@ class Main extends JFrame
 {
 	//changing image located on JFrame
 	//ImageIcon img = new ImageIcon("C:\\BoxGui\\face.jpg");
+        JFrame frame;
+        JFrame frame2;
 	
 	public Main()
 	{
-            JFrame frame = new JFrame();
+            frame = new JFrame();
             //frame.setIconImage(img.getImage());
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             SearchEngine se = new SearchEngine();
@@ -29,7 +31,7 @@ class Main extends JFrame
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
             
-            JFrame frame2 = new JFrame();
+             frame2 = new JFrame();
             //frame2.setIconImage(img.getImage());
             frame2.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             Maintenance me = new Maintenance();
@@ -42,9 +44,10 @@ class Main extends JFrame
             
         }
         
-        public void frameTwo()
+        public void reset()
         {
-            
+            frame.setLocationRelativeTo(null);
+            frame2.setLocationRelativeTo(null);
         }
         
     public static void main(String[] args) 
