@@ -21,6 +21,7 @@ import javax.swing.border.Border;
 public class Maintenance extends JPanel implements ActionListener
 {
     private final JLabel titleLbl2, versionLbl, indxLbl;
+    private int indexCount = 0;
     // fnLbl, statusLbl,
     //private final JTextArea txt;
     private JTable table;
@@ -54,15 +55,9 @@ public class Maintenance extends JPanel implements ActionListener
             tc.setHeaderValue("File Name");
             tc2.setHeaderValue("Status");
             th.repaint();
-            //table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-            //TableColumn col = table.getColumnModel().getColumn(0);
-            //int width = 100;
-            //col.setPreferredWidth(width);
-            //txt = new JTextArea(15, 52);
-            //txt.setBorder(indexBorder);
-            //txt.setEditable(false);
             JScrollPane sp = new JScrollPane(table);
-            sp.setPreferredSize(new Dimension(580, 225));
+            sp.getViewport().setBackground(Color.WHITE);
+            sp.setPreferredSize(new Dimension(580, 258));
             three.add(sp);
         main2.add(three);
         
@@ -134,7 +129,6 @@ public class Maintenance extends JPanel implements ActionListener
                         dtm.addRow(new Object[]{selectedFile.getAbsoluteFile(), index});
                         
                         //table.append(selectedFile.getName() + "." + "\t\t" + "Indexed" + "\n");
-         
                     }
 		}
                 else if(ae.getSource() == rebuild)
