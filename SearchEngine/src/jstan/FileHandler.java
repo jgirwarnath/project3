@@ -36,17 +36,6 @@ public class FileHandler
     
     public void removeFileRow()
     {
-        if (Maintenance.table.getSelectedRow() != -1)
-        {
-            int numRows = Maintenance.table.getSelectedRows().length;
-            for(int i = 0; i < numRows; i++)
-            {
-                dtm.removeRow(Maintenance.table.getSelectedRow());
-            }
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null, "No files to remove", "Warning", JOptionPane.WARNING_MESSAGE);
-        }
+        JOptionPane.showMessageDialog(null, "No files to remove", "Warning", JOptionPane.WARNING_MESSAGE);     
     }
 }

@@ -28,7 +28,7 @@ class Main extends JFrame
             searchFrame.setLocationRelativeTo(null);
             searchFrame.setVisible(true);
             
-             maintenanceFrame = new JFrame();
+            maintenanceFrame = new JFrame();
             maintenanceFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             Maintenance me = new Maintenance();
             maintenanceFrame.add(me);

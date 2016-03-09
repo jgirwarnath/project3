@@ -140,7 +140,7 @@ class SearchEngine extends JPanel implements ActionListener
 		 maintenance.addActionListener((ActionEvent e) -> {
                      if(e.getSource() == maintenance)
                      {
-                         Main.frame2.setVisible(true);
+                         Main.maintenanceFrame.setVisible(true);
                      }
                 }); 
 

@@ -10,7 +10,6 @@ import javax.swing.table.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
-import java.io.File;
 /**
  *
  * @author thomas
@@ -18,7 +17,7 @@ import java.io.File;
 public class Maintenance extends JPanel implements ActionListener
 {
     private final JLabel titleLbl2, versionLbl, indxLbl;
-    private int indexCount = 0;
+    static int indexCount = 0;
     static JTable table;
     private final JButton addBtn, rebuild, remove, reset;
     private String file = "";
@@ -116,8 +115,10 @@ public class Maintenance extends JPanel implements ActionListener
                 }
                 else if(ae.getSource() == remove)
                 {
+                    FileHandler rf = new FileHandler();
+                    rf.removeFileRow();
                     //be sure to use mouse listener when removing the files from the list.
-                    JOptionPane.showMessageDialog(null, "This button will remove all highlighted files");
+                    //JOptionPane.showMessageDialog(null, "This button will remove all highlighted files");
                 }
                 else if(ae.getSource() == reset)
                 {
