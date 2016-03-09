@@ -137,6 +137,7 @@ public class Maintenance extends JPanel implements ActionListener
                 }
                 else if(ae.getSource() == remove)
                 {
+                    //be sure to use mouse listener when removing the files from the list.
                     JOptionPane.showMessageDialog(null, "This button will remove all highlighted files");
                 }
                 else if(ae.getSource() == reset)
