@@ -10,10 +10,7 @@ import javax.swing.table.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
-import java.util.*;
 import java.io.File;
-import javax.swing.BorderFactory;
-import javax.swing.border.Border;
 /**
  *
  * @author thomas
@@ -22,12 +19,8 @@ public class Maintenance extends JPanel implements ActionListener
 {
     private final JLabel titleLbl2, versionLbl, indxLbl;
     private int indexCount = 0;
-    // fnLbl, statusLbl,
-    //private final JTextArea txt;
-    private JTable table;
-    String index = "Indexed";
+    static JTable table;
     private final JButton addBtn, rebuild, remove, reset;
-    //private final Border indexBorder;
     private String file = "";
     
     
@@ -66,7 +59,6 @@ public class Maintenance extends JPanel implements ActionListener
             addBtn = new JButton("Add File");
             //setting alt keys
             addBtn.setMnemonic(KeyEvent.VK_A);
-            //schBtn.setEnabled(false);
             //tool tip to let user know what this button does.
             addBtn.setToolTipText("Click to add a file");
             addBtn.addActionListener(this);
@@ -115,21 +107,8 @@ public class Maintenance extends JPanel implements ActionListener
 	{   
 		if(ae.getSource() == addBtn)
 		{
-                    JFileChooser fileChooser = new JFileChooser();
-                    fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
-                    int result = fileChooser.showOpenDialog(this);
-                    if (result == JFileChooser.APPROVE_OPTION)
-                    {
-                        File selectedFile = fileChooser.getSelectedFile();                  
-                        DefaultTableModel dtm = (DefaultTableModel) table.getModel();
-                        System.out.println("Selected file: " + selectedFile.getAbsolutePath());
-                       // Vector v = new Vector();
-                        //v.add(file);
-                        //v.add(index);
-                        dtm.addRow(new Object[]{selectedFile.getAbsoluteFile(), index});
-                        
-                        //table.append(selectedFile.getName() + "." + "\t\t" + "Indexed" + "\n");
-                    }
+                    FileHandler fh = new FileHandler();
+                    fh.addFile();
 		}
                 else if(ae.getSource() == rebuild)
                 {
@@ -142,8 +121,8 @@ public class Maintenance extends JPanel implements ActionListener
                 }
                 else if(ae.getSource() == reset)
                 {
-                    Main.frame.setLocationRelativeTo(null);
-                    Main.frame2.setLocationRelativeTo(null);
+                    Main.searchFrame.setLocationRelativeTo(null);
+                    Main.maintenanceFrame.setLocationRelativeTo(null);
                 }
 	}
 }
