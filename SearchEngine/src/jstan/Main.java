@@ -16,8 +16,8 @@ class Main extends JFrame
 {
 	//changing image located on JFrame
 	//ImageIcon img = new ImageIcon("C:\\BoxGui\\face.jpg");
-        JFrame frame;
-        JFrame frame2;
+        static JFrame frame;
+        static JFrame frame2;
 	
 	public Main()
 	{
@@ -39,7 +39,7 @@ class Main extends JFrame
             frame2.setSize(600, 440);
             frame.pack();
             frame2.setLocationRelativeTo(null);
-            frame2.setVisible(true);
+            frame2.setVisible(false);
             
             
         }
