@@ -12,6 +12,7 @@ import java.awt.*;
 import java.util.Date;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
+import static sun.security.pkcs.PKCS8Key.version;
 /**
  *
  * @author thomas
@@ -27,7 +28,19 @@ class SearchEngine extends JPanel implements ActionListener
 	private final String anyString = ("Any of the Search Terms");
 	private final String exactString = ("Exact Phrase");
 	private final Border dateBorder, indexBorder;
-	
+        
+        //author alignment for the about button
+        private final String Authors = "<html>Authors:<br>"
+                                 + "<table border=\"1\" style=\"width:100%\">"
+                                 + "  <tr>"
+                                 + "     <td>Jonathan Girwar-Nath, Saurel Cerome "
+                                 + "  </tr>"
+                                 + "  <tr>"
+                                 + "     <td>Thomas Sclichler, Alexander Infante "
+                                 + "  </tr>"
+                                 + "</table>"
+                                 + " Version:"
+                                 + "</html>";
 	
 	public SearchEngine()
 	{
@@ -147,7 +160,9 @@ class SearchEngine extends JPanel implements ActionListener
 		 about.addActionListener((ActionEvent a) -> {
                      if(a.getSource() == about)
                      {
-                         JOptionPane.showMessageDialog(null, "About Form soon to come");
+                          
+                         JOptionPane.showMessageDialog(null,  Authors);
+                         
                      }
                 });      
 			
