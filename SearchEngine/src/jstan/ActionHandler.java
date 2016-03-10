@@ -7,18 +7,14 @@ package jstan;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.OutputStreamWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -30,6 +26,8 @@ public class ActionHandler
     String index = "Indexed";
     DefaultTableModel dtm;
     BufferedWriter writer;
+    //BufferedReader read;
+    FileWriter toFile;
     ObjectOutputStream obj;
     ObjectInputStream objIn;
     
@@ -57,40 +55,35 @@ public class ActionHandler
     
     public void saveJTable()
     {
-        try 
-        {
-            File file = new File("D:\\JavaProj3\\project3\\SearchEngine\\src\\resources");
-            if(!file.exists())
+        try {
+
+            toFile = new FileWriter("D:\\JavaProj3\\project3\\SearchEngine\\src\\resources\\JTableSaveInfo.txt");
+
+            for(int row = 0; row < Maintenance.table.getRowCount(); row++)
             {
-                file.createNewFile();
-            }
-            
-            FileWriter fw = new FileWriter(file.getAbsolutePath());
-            writer = new BufferedWriter(fw);
-            
-            for(int i = 0; i < Maintenance.table.getRowCount(); i++)
-                for(int j = 0; j < Maintenance.table.getColumnCount(); j++)
+                for(int col = 0; col < Maintenance.table.getColumnCount(); col++)
                 {
-                    writer.write(Maintenance.table.getModel().getValueAt(i, j) + " ");
+                     toFile.write(Maintenance.table.getValueAt(row, col).toString()+"\t");
                 }
-            writer.write("\n__________\n");
-            writer.close();
-            fw.close();
-            //obj = new OutputStreamWriter(new FileOutputStream("D:\\JavaProj3\\project3\\SearchEngine\\src\\resources\\JTableSaveInfo.txt", true));
-            //obj.write(Maintenance.table);
-            //obj.close();
-        } catch (IOException ex) {
-            Logger.getLogger(ActionHandler.class.getName()).log(Level.SEVERE, null, ex);
-        }
+               toFile.write("\n");
+            }
+            toFile.close();
+            }catch (IOException ex) 
+                {
+                    Logger.getLogger(ActionHandler.class.getName()).log(Level.SEVERE, null, ex);
+                }
     }
     
-   /* public void loadJTable()
+   public void loadJTable()
     {
-        try {
-            objIn = new ObjectInputStream(new FileInputStream("\\resources\\JTableSaveInfo"));
-            Maintenance.table = (JTable) objIn.readObject();
-        } catch (IOException ex) {
-            Logger.getLogger(ActionHandler.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }*/
+       
+    }
 }
+/* try 
+        {
+            obj = new ObjectOutputStream(new FileOutputStream("D:\\JavaProj3\\project3\\SearchEngine\\src\\resources\\JTableSaveInfo.txt", true));
+            obj.writeObject(dtm);
+            obj.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }*/
