@@ -106,7 +106,7 @@ public class Maintenance extends JPanel implements ActionListener
 	{   
 		if(ae.getSource() == addBtn)
 		{
-                    FileHandler fh = new FileHandler();
+                    ActionHandler fh = new ActionHandler();
                     fh.addFile();
 		}
                 else if(ae.getSource() == rebuild)
@@ -115,7 +115,7 @@ public class Maintenance extends JPanel implements ActionListener
                 }
                 else if(ae.getSource() == remove)
                 {
-                    FileHandler rf = new FileHandler();
+                    ActionHandler rf = new ActionHandler();
                     rf.removeFileRow();
                     //be sure to use mouse listener when removing the files from the list.
                     //JOptionPane.showMessageDialog(null, "This button will remove all highlighted files");
