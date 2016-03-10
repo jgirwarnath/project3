@@ -84,6 +84,7 @@ class SearchEngine extends JPanel implements ActionListener
 		second.add(searchLbl);
 		second.add(Box.createHorizontalStrut(10));
 		schTxt = new JTextField();
+                schTxt.addActionListener(this);
 		second.add(schTxt);
 		second.add(Box.createHorizontalStrut(10));
 		schBtn = new JButton("Search");
@@ -191,6 +192,7 @@ class SearchEngine extends JPanel implements ActionListener
         @Override
 	public void actionPerformed(ActionEvent ae)
 	{
+            
 		if(ae.getSource() == schBtn)
 		{
 			if(allSearch.isSelected())
@@ -205,8 +207,11 @@ class SearchEngine extends JPanel implements ActionListener
 			{
 				JOptionPane.showMessageDialog(null, "exact search");
 			}
-		}
+		
+                }
+                
+        }
 				
-	}
+	
 }
 
