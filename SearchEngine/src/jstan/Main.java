@@ -36,7 +36,7 @@ class Main extends JFrame
             searchFrame.pack();
             maintenanceFrame.setLocationRelativeTo(null);
             maintenanceFrame.setVisible(false);
-            
+              
             
         }
         
