@@ -12,6 +12,7 @@ import java.awt.*;
 import java.util.Date;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
+
 /**
  *
  * @author thomas
@@ -39,17 +40,13 @@ class SearchEngine extends JPanel implements ActionListener
                                  + "     <td>Thomas Sclichler, Alexander Infante "
                                  + "  </tr>"
                                  + "</table><br>"
-                                 + "<strong>Version:</strong> 1.1 <br>" 
+                                 + "<strong>Version:</strong> 1.1 <br><br>" 
                                  + "<strong>Description:</strong>  This program is to search a local drive<br>"
-                                 + "for a specific file and then index the files contents."
+                                 + "for a specific file and then index the files contents.<br><br>"
+                                 + "Tampa, Fl  02/2016"
                                  + "</html>";
 
-        private final ImageIcon aboutIcn;
-        
-        
-            
-            
-        
+        private final ImageIcon aboutIcn;  
 
     public static int getABORT() {
         return ABORT;
@@ -161,12 +158,12 @@ class SearchEngine extends JPanel implements ActionListener
 		
 		seventh.add(Box.createHorizontalStrut(280));
 		indexBorder = BorderFactory.createLoweredBevelBorder();
-		indexLbl = new JLabel("Number of index's on file: ");
+		indexLbl = new JLabel("Number of index's on file: " );
 		seventh.add(indexLbl);
 		indexLbl.setBorder(indexBorder);
 		seventh.add(Box.createHorizontalGlue());
 		main.add(seventh);
-		
+                
                 
 		add(main);
 		
@@ -211,6 +208,11 @@ class SearchEngine extends JPanel implements ActionListener
                 }
                 
         }
+
+        
+        
+        
+        
 				
 	
 }
