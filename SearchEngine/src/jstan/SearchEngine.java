@@ -44,7 +44,11 @@ class SearchEngine extends JPanel implements ActionListener
                                  + "for a specific file and then index the files contents."
                                  + "</html>";
 
-        private final ImageIcon icon;
+        private final ImageIcon aboutIcn;
+        
+        
+            
+            
         
 
     public static int getABORT() {
@@ -141,7 +145,7 @@ class SearchEngine extends JPanel implements ActionListener
 		about.setMnemonic(KeyEvent.VK_B);
                 
                 //adding icon to the about button
-                this.icon = new ImageIcon(SearchEngine.class.getResource("/resources/about image"));
+                this.aboutIcn = new ImageIcon(SearchEngine.class.getResource("/resources/about image"));
 		main.add(sixth);
 		
 		main.add(Box.createVerticalStrut(25));
@@ -162,13 +166,14 @@ class SearchEngine extends JPanel implements ActionListener
 		seventh.add(Box.createHorizontalGlue());
 		main.add(seventh);
 		
+                
 		add(main);
 		
 		//making use of an anonymous inner class 
 		 maintenance.addActionListener((ActionEvent e) -> {
                      if(e.getSource() == maintenance)
                      {
-                         Main.frame.setVisible(true);
+                         Main.frame2.setVisible(true);
                      }
                 }); 
 
@@ -176,7 +181,7 @@ class SearchEngine extends JPanel implements ActionListener
                      if(a.getSource() == about)
                      {
                          
-                           JOptionPane.showMessageDialog(null,  Authors, "About", JOptionPane.INFORMATION_MESSAGE, icon);
+                           JOptionPane.showMessageDialog(null,  Authors, "About", JOptionPane.INFORMATION_MESSAGE, aboutIcn);
 
                      }
                 });      
