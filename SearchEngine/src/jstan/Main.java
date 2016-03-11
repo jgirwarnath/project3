@@ -14,30 +14,49 @@ import javax.swing.SwingUtilities;
  */
 class Main extends JFrame
 {
-        static JFrame searchFrame;
-        static JFrame maintenanceFrame;
+	//changing image located on JFrame
+	ImageIcon img = new ImageIcon("/resources/icon");
+        
+        static JFrame frame;
+        static JFrame frame2;
 	
 	public Main()
 	{
-            searchFrame = new JFrame();
-            searchFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            this.img = new ImageIcon(Main.class.getResource("/resources/icon"));
+        
+            frame = new JFrame();
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             SearchEngine se = new SearchEngine();
-            searchFrame.add(se);
-            searchFrame.setSize(700, 500);
-            searchFrame.pack();
-            searchFrame.setLocationRelativeTo(null);
-            searchFrame.setVisible(true);
+            frame.add(se);
+            frame.setSize(700, 500);
+            frame.pack();
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
             
-            maintenanceFrame = new JFrame();
-            maintenanceFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
+            frame2 = new JFrame();
+
+            frame2.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             Maintenance me = new Maintenance();
-            maintenanceFrame.add(me);
-            maintenanceFrame.setSize(600, 440);
-            searchFrame.pack();
-            maintenanceFrame.setLocationRelativeTo(null);
-            maintenanceFrame.setVisible(false);
+            frame2.add(me);
+            frame2.setSize(600, 440);
+            frame.pack();
+            frame2.setLocationRelativeTo(null);
+            frame2.setVisible(false);
+            
+            //adding icons
+            this.img = new ImageIcon(Main.class.getResource("/resources/icon"));
+            frame.setIconImage(img.getImage());
+            frame2.setIconImage(img.getImage());    
+
             
             
+        }
+        
+        public void reset()
+        {
+            frame.setLocationRelativeTo(null);
+            frame2.setLocationRelativeTo(null);
         }
         
     public static void main(String[] args) 
