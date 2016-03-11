@@ -8,6 +8,7 @@ package jstan;
 
 import javax.swing.*;
 import javax.swing.SwingUtilities;
+import java.io.*;
 /**
  *
  * @author thomas
@@ -46,6 +47,53 @@ class Main extends JFrame
 	{
         SwingUtilities.invokeLater(() -> {
             Main mm = new Main();
+     
         });
+        
+        
+        
+                FileInputStream  fileIn = null;
+		FileOutputStream fileOut = null;
+		
+                        try{
+			fileIn = new FileInputStream("texts/input");
+			fileOut = new FileOutputStream("texts/output");
+			
+			int i;
+			while((i = fileIn.read())!=-1){
+				
+				fileOut.write(i);
+			}
+			
+			
+                        } catch (IOException ioe){}
+			
+                            
+		
+                         finally {
+                                    try{
+					if(fileIn !=null) {fileIn.close();}
+					if(fileOut !=null) {fileOut.close();}
+					
+						
+                                        }
+                                        catch(IOException ioe){}
+					
+				
+		}
+		
+	}
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
-}
+
