@@ -1,0 +1,29 @@
+*/
+
+SearchEngineFile.TXT
+
+SearchEngine version 1.1:
+
+* the maintanance class is where all searches takes place
+
+* the maintanance class will hold the files that need to in the indexed
+
+* it will hold two separate fields that are separated by a comma
+
+* the first field is the absolute path of the file
+
+* the second field is the last time the file was modified
+
+* for example:
+
+
+ * C:\users\home\file.txt,Sunday March 13 18:45
+
+
+* the indexed files will also be in the maintanance class
+
+* 
+
+
+
+*/
