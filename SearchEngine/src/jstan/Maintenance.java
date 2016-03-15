@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // This class is used to create the second frame which will
 // allow the maintenance of the files. These files can be 
 // added, removed or rebuilt. Alt keys and tool tips have been 
