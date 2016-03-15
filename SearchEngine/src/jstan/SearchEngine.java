@@ -9,7 +9,10 @@ package jstan;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
+<<<<<<< HEAD
 import javax.swing.SwingUtilities;
+=======
+>>>>>>> origin/TSdatastructure
 import java.util.Date;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
@@ -19,15 +22,15 @@ import javax.swing.border.Border;
  */
 class SearchEngine extends JPanel implements ActionListener
 {
-	private JLabel titleLbl, searchLbl, dateLbl, indexLbl;
-	private JTextField schTxt;
-	private JTextArea appTxt;
-	private JButton schBtn, maintenance, about;
-	private JRadioButton allSearch, anySearch, exactSearch;
-	private String allString = ("All of the Search Terms");
-	private String anyString = ("Any of the Search Terms");
-	private String exactString = ("Exact Phrase");
-	private Border dateBorder, indexBorder;
+	private final JLabel titleLbl, searchLbl, dateLbl, indexLbl;
+	private final JTextField schTxt;
+	private final JTextArea appTxt;
+	private final JButton schBtn, maintenance, about;
+	private final JRadioButton allSearch, anySearch, exactSearch;
+	private final String allString = ("All of the Search Terms");
+	private final String anyString = ("Any of the Search Terms");
+	private final String exactString = ("Exact Phrase");
+	private final Border dateBorder, indexBorder;
 	
 	
 	public SearchEngine()
@@ -41,7 +44,7 @@ class SearchEngine extends JPanel implements ActionListener
 		//creatimg ImageIcon and re-sizing to fit label
 		//ImageIcon imgIcon = new ImageIcon(new ImageIcon("C:\\BoxGui\\search.png").getImage().getScaledInstance(300, 80, Image.SCALE_DEFAULT));
 		titleLbl = new JLabel("Search Engine");
-		//titleLblsetFont(new Font("sanseriff", Font.Bold, 20);
+		titleLbl.setFont(new Font("sanseriff", Font.BOLD, 20));
 		//titleLbl.setIcon(imgIcon);
 		first.add(titleLbl);
 		main.add(first);
@@ -117,7 +120,7 @@ class SearchEngine extends JPanel implements ActionListener
 		about.setMnemonic(KeyEvent.VK_B);
 		main.add(sixth);
 		
-		main.add(Box.createVerticalStrut(5));
+		main.add(Box.createVerticalStrut(25));
 		
 		Box seventh = Box.createHorizontalBox();
 		seventh.add(Box.createHorizontalGlue());
@@ -138,47 +141,23 @@ class SearchEngine extends JPanel implements ActionListener
 		add(main);
 		
 		//making use of an anonymous inner class 
-		 maintenance.addActionListener(new ActionListener() {
- 
-            public void actionPerformed(ActionEvent e)
-            {
-				if(e.getSource() == maintenance)
-				{
-                                    JPanel p = new JPanel();
-                                    JFrame frame2 = new JFrame();
-                                    
-                                    p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
-		
-                                    Box first2 = Box.createHorizontalBox();
-                                    JLabel title2 = new JLabel("Maintenance Form");
-                                    title2.setFont(new Font("SansSerif", Font.BOLD, 20));
-                                    first2.add(title2);
-                                    p.add(first2);
-                
-                                    frame2.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-					
-                                        frame2.add(p);
-					frame2.setSize(500, 300);
-					//frame.pack();
-					frame2.setLocationByPlatform(true);
-					frame2.setVisible(true);
-                                }
-            }
-        }); 
+		 maintenance.addActionListener((ActionEvent e) -> {
+                     if(e.getSource() == maintenance)
+                     {
+                         Main.maintenanceFrame.setVisible(true);
+                     }
+                }); 
 
-		 about.addActionListener(new ActionListener() {
- 
-            public void actionPerformed(ActionEvent a)
-            {
-                if(a.getSource() == about)
-				{
-					 JOptionPane.showMessageDialog(null, "About Form soon to come");
-				}
-            }
-        });      
+		 about.addActionListener((ActionEvent a) -> {
+                     if(a.getSource() == about)
+                     {
+                         JOptionPane.showMessageDialog(null, "About Form soon to come");
+                     }
+                });      
 			
 	}
 	
+        @Override
 	public void actionPerformed(ActionEvent ae)
 	{
 		if(ae.getSource() == schBtn)

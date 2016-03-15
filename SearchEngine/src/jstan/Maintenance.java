@@ -6,22 +6,22 @@
 //
 // Written 02/16/2015 by Thomas Schlicher, Tampa Florida USA
 package jstan;
-
+import javax.swing.table.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
-import javax.swing.BorderFactory;
-import javax.swing.border.Border;
 /**
  *
  * @author thomas
  */
 public class Maintenance extends JPanel implements ActionListener
 {
-    private JLabel titleLbl2, fnLbl, dateLbl, statusLbl, versionLbl, indxLbl;
-    private JTextArea txt;
-    private JButton addBtn, rebuild, remove, reset;
-    private Border dateBorder, indexBorder;
+    private final JLabel titleLbl2, versionLbl, indxLbl;
+    static int indexCount = 0;
+    static JTable table;
+    private final JButton addBtn, rebuild, remove, reset;
+    private String file = "";
+    
     
     public Maintenance()
     {
@@ -37,23 +37,20 @@ public class Maintenance extends JPanel implements ActionListener
 	
 	//strut is used to put spacing between the different boxes.	
 	main2.add(Box.createVerticalStrut(10));
-		
-	Box two = Box.createHorizontalBox();
-            fnLbl = new JLabel("File Name");
-            indexBorder = BorderFactory.createLineBorder(Color.black);
-            fnLbl.setBorder(indexBorder);
-            fnLbl.setMaximumSize(new Dimension(300, 50));
-            two.add(fnLbl);
-            statusLbl = new JLabel("Status");
-            statusLbl.setBorder(indexBorder);
-            statusLbl.setMaximumSize(new Dimension(300, 50));
-            two.add(statusLbl);
-        main2.add(two);
         
         Box three = Box.createHorizontalBox();
-            txt = new JTextArea(15, 52);
-            txt.setBorder(indexBorder);
-            three.add(txt);
+            table = new JTable(0, 2);
+            JTableHeader th = table.getTableHeader();
+            TableColumnModel tcm = th.getColumnModel();
+            TableColumn tc = tcm.getColumn(0);
+            TableColumn tc2 = tcm.getColumn(1);
+            tc.setHeaderValue("File Name");
+            tc2.setHeaderValue("Status");
+            th.repaint();
+            JScrollPane sp = new JScrollPane(table);
+            sp.getViewport().setBackground(Color.WHITE);
+            sp.setPreferredSize(new Dimension(580, 258));
+            three.add(sp);
         main2.add(three);
         
         //creating radiobuttons
@@ -61,7 +58,6 @@ public class Maintenance extends JPanel implements ActionListener
             addBtn = new JButton("Add File");
             //setting alt keys
             addBtn.setMnemonic(KeyEvent.VK_A);
-            //schBtn.setEnabled(false);
             //tool tip to let user know what this button does.
             addBtn.setToolTipText("Click to add a file");
             addBtn.addActionListener(this);
@@ -105,11 +101,13 @@ public class Maintenance extends JPanel implements ActionListener
     }
     
     //method that allows the action on button clicks
+    @Override
     public void actionPerformed(ActionEvent ae)
-	{
+	{   
 		if(ae.getSource() == addBtn)
 		{
-                    JOptionPane.showMessageDialog(null, "This button will add files");
+                    ActionHandler fh = new ActionHandler();
+                    fh.addFile();
 		}
                 else if(ae.getSource() == rebuild)
                 {
@@ -117,11 +115,15 @@ public class Maintenance extends JPanel implements ActionListener
                 }
                 else if(ae.getSource() == remove)
                 {
-                    JOptionPane.showMessageDialog(null, "This button will remove all highlighted files");
+                    ActionHandler rf = new ActionHandler();
+                    rf.removeFileRow();
+                    //be sure to use mouse listener when removing the files from the list.
+                    //JOptionPane.showMessageDialog(null, "This button will remove all highlighted files");
                 }
                 else if(ae.getSource() == reset)
                 {
-                    JOptionPane.showMessageDialog(null, "This button will reset the window position");
+                    Main.searchFrame.setLocationRelativeTo(null);
+                    Main.maintenanceFrame.setLocationRelativeTo(null);
                 }
 	}
 }
