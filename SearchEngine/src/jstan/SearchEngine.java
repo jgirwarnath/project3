@@ -9,10 +9,6 @@ package jstan;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
-<<<<<<< HEAD
-import javax.swing.SwingUtilities;
-=======
->>>>>>> origin/TSdatastructure
 import java.util.Date;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
