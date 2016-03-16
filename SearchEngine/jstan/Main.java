@@ -42,8 +42,8 @@ class Main extends JFrame
         
         public void reset()
         {
-            frame.setLocationRelativeTo(null);
-            frame2.setLocationRelativeTo(null);
+            searchFrame.setLocationRelativeTo(null);
+            maintenanceFrame.setLocationRelativeTo(null);
         }
         
     public static void main(String[] args) 
