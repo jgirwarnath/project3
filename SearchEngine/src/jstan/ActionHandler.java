@@ -1,5 +1,6 @@
 /* This class will strictly deal with the functionality of
  * buttons.
+*/
  
 package jstan;
 
@@ -63,7 +64,7 @@ public class ActionHandler
     {
         try {
 
-            toFile = new FileWriter("D:\\JavaProj3\\project3\\SearchEngine\\src\\resources\\JTableSaveInfo.txt", true);
+            toFile = new FileWriter("D:\\JavaProj3\\searchEngine\\SearchEngine\\src\\resources\\JTableSaveInfo.txt", true);
 
             for(int row = 0; row < Maintenance.table.getRowCount(); row++)
             {
