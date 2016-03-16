@@ -1,11 +1,10 @@
-<<<<<<< HEAD
 // This class is used to create the second frame which will
 // allow the maintenance of the files. These files can be 
 // added, removed or rebuilt. Alt keys and tool tips have been 
 // used to allow the user access data easier while knowing what
 // something does.
 //
-// Written 02/16/2015 by Thomas Schlicher, Tampa Florida USA
+// Written 02/16/2015 by jstan, Tampa Florida USA
 package jstan;
 import javax.swing.table.*;
 import javax.swing.*;
@@ -13,7 +12,7 @@ import java.awt.event.*;
 import java.awt.*;
 /**
  *
- * @author thomas
+ * @author jstan
  */
 public class Maintenance extends JPanel implements ActionListener
 {
@@ -28,16 +27,16 @@ public class Maintenance extends JPanel implements ActionListener
     {
     	//using Box Layout for the JFrame development
         JPanel main2 = new JPanel();
-	main2.setLayout(new BoxLayout(main2, BoxLayout.Y_AXIS));
+		main2.setLayout(new BoxLayout(main2, BoxLayout.Y_AXIS));
 		
-	Box one = Box.createHorizontalBox();
+		Box one = Box.createHorizontalBox();
             titleLbl2 = new JLabel("Search Engine - Maintenance Form");
             titleLbl2.setFont(new Font("SansSerif", Font.BOLD, 20));
             one.add(titleLbl2);
-	main2.add(one);
+		main2.add(one);
 	
-	//strut is used to put spacing between the different boxes.	
-	main2.add(Box.createVerticalStrut(10));
+		//strut is used to put spacing between the different boxes.	
+		main2.add(Box.createVerticalStrut(10));
         
         Box three = Box.createHorizontalBox();
             table = new JTable(0, 2);
