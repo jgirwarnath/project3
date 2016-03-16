@@ -3,14 +3,14 @@
 // It will allow searching of files, removing files and the
 // adding of files.
 //
-// Written 02/16/2015 by Thomas Schlicher, Tampa Florida USA
+// Written 02/16/2015 by jstan, Tampa Florida USA
 package jstan;
 
 import javax.swing.*;
 import javax.swing.SwingUtilities;
 /**
  *
- * @author thomas
+ * @author jstan
  */
 class Main extends JFrame
 {
@@ -59,7 +59,7 @@ class Main extends JFrame
 	//the part below was free floating inside the main class,
 	//if we are to use this it should be in a method within the
 	//appropriate class.
-	public void notSure()
+/*	public void notSure()
 	{
 		 FileInputStream  fileIn = null;
 		FileOutputStream fileOut = null;
@@ -92,4 +92,4 @@ class Main extends JFrame
 		}
 	}
 }
-
+*/
