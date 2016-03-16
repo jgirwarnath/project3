@@ -1,8 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/* This class will strictly deal with the functionality of
+ * buttons.
+ 
 package jstan;
 
 import java.io.BufferedWriter;
@@ -19,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author thomas
+ * @author jstan
  */
 public class ActionHandler
 {
@@ -31,14 +29,20 @@ public class ActionHandler
     ObjectOutputStream obj;
     ObjectInputStream objIn;
     
+    // the addFile() will handle adding all files to JTable
     @SuppressWarnings("empty-statement")
     public void addFile()
     {
+        // filechooser used to open up file explorer on any computer
         JFileChooser fileChooser = new JFileChooser();
+        
+        // used user.home to signal where the filechooser should open its
+        // menu up to.
         fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
         int result = fileChooser.showOpenDialog(null);
         if (result == JFileChooser.APPROVE_OPTION)
         {
+            // here we will add files to JTable and then call a method to save them.
             File selectedFile = fileChooser.getSelectedFile(); 
             dtm = (DefaultTableModel) Maintenance.table.getModel();
             System.out.println("Selected file: " + selectedFile.getAbsolutePath());
@@ -53,6 +57,8 @@ public class ActionHandler
         JOptionPane.showMessageDialog(null, "No files to remove", "Warning", JOptionPane.WARNING_MESSAGE);     
     }
     
+    // This method will save all indexed files to JTable which can later
+    // be loaded into JTable.
     public void saveJTable()
     {
         try {
@@ -79,11 +85,3 @@ public class ActionHandler
        
     }
 }
-/* try 
-        {
-            obj = new ObjectOutputStream(new FileOutputStream("D:\\JavaProj3\\project3\\SearchEngine\\src\\resources\\JTableSaveInfo.txt", true));
-            obj.writeObject(dtm);
-            obj.close();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }*/
