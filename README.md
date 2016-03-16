@@ -31,5 +31,5 @@ Project Scope:
 Only file I/O operations need to be completed for this part of the Search Engine, but feel free to implement the funcionality of the buttons in the UI.
 	
 Division of Labor:
-TBA
+	Team collaboration.
 	
