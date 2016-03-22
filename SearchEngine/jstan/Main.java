@@ -16,8 +16,9 @@ class Main extends JFrame
 {
         static JFrame searchFrame;
         static JFrame frame2;
+	JFrame maintenanceFrame = new JFrame();
 	
-	public Main()
+        public Main()
 	{
         searchFrame = new JFrame();
         searchFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -28,7 +29,7 @@ class Main extends JFrame
         searchFrame.setLocationRelativeTo(null);
         searchFrame.setVisible(true);
             
-        maintenanceFrame = new JFrame();
+        
         maintenanceFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Maintenance me = new Maintenance();
         maintenanceFrame.add(me);
