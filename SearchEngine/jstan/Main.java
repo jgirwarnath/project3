@@ -15,8 +15,8 @@ import javax.swing.SwingUtilities;
 class Main extends JFrame
 {
         static JFrame searchFrame;
-        static JFrame frame2;
-	JFrame maintenanceFrame = new JFrame();
+        static JFrame maintenanceFrame;
+	 
 	
         public Main()
 	{
@@ -29,7 +29,7 @@ class Main extends JFrame
         searchFrame.setLocationRelativeTo(null);
         searchFrame.setVisible(true);
             
-        
+        maintenanceFrame = new JFrame();
         maintenanceFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Maintenance me = new Maintenance();
         maintenanceFrame.add(me);
