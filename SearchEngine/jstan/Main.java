@@ -40,13 +40,6 @@ class Main extends JFrame
             
             
         }
-        //this wont work unless you call this method when the button is clicked.
-        //inside the button action their is a reset call..
-        public void reset()
-        {
-            searchFrame.setLocationRelativeTo(null);
-            maintenanceFrame.setLocationRelativeTo(null);
-        }
         
     public static void main(String[] args) 
 	{
