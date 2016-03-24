@@ -64,7 +64,7 @@ public class ActionHandler
     {
         try {
 
-            toFile = new FileWriter("D:\JavaProj3\project3\SearchEngine\resources\\JTableSaveInfo.txt", true);
+            toFile = new FileWriter("/resources/JTableSaveInfo.txt", true);
 
             for(int row = 0; row < Maintenance.table.getRowCount(); row++)
             {
