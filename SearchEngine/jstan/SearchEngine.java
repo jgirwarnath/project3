@@ -27,6 +27,10 @@ class SearchEngine extends JPanel implements ActionListener
 	private final String anyString = ("Any of the Search Terms");
 	private final String exactString = ("Exact Phrase");
 	private final Border dateBorder, indexBorder;
+        
+        
+        Font font = new Font("Serif", Font.BOLD, 15);
+        Color textColor = Color.GRAY;
 	
                  //about button components
         private final String Authors = "<html> "
@@ -78,7 +82,6 @@ class SearchEngine extends JPanel implements ActionListener
 		second.add(searchLbl);
 		second.add(Box.createHorizontalStrut(10));
 		schTxt = new JTextField();
-                schTxt.addFocusListener(l);
 		second.add(schTxt);
 		second.add(Box.createHorizontalStrut(10));
 		schBtn = new JButton("Search");
@@ -179,17 +182,24 @@ class SearchEngine extends JPanel implements ActionListener
                      }
                 });      
                  
-       schTxt.addFocusListener(new FocusListener() {
+  
+            //setting the search text and button tied together
+            
+            schTxt.addFocusListener(new FocusListener() {
 
             @Override
             public void focusGained(FocusEvent e) {
                 schTxt.setText("");
+                    schBtn.setEnabled(true);
             }
 
             @Override
             public void focusLost(FocusEvent e) {
-                 
-                Font font = new Font("Serif", Font.BOLD, 15);
+            
+                schBtn.setEnabled(false);
+                
+                //i cant seem to change the color of the textField
+                
                 schTxt.setFont(font);
                 schTxt.setText("Search here");
             }
