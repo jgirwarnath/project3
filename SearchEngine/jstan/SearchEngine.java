@@ -19,7 +19,7 @@ import javax.swing.border.Border;
 class SearchEngine extends JPanel implements ActionListener
 {
 	private final JLabel titleLbl, searchLbl, dateLbl, indexLbl;
-	private final JTextField schTxt;
+	private JTextField schTxt;
 	private final JTextArea appTxt;
 	private final JButton schBtn, maintenance, about;
 	private final JRadioButton allSearch, anySearch, exactSearch;
@@ -28,7 +28,30 @@ class SearchEngine extends JPanel implements ActionListener
 	private final String exactString = ("Exact Phrase");
 	private final Border dateBorder, indexBorder;
 	
+                 //about button components
+        private final String Authors = "<html> "
+                                 + "<strong>Authors:</strong> <br>"
+                                 + "<table border=\"1\" style=\"width:100%\">"
+                                 + "  <tr>"
+                                 + "     <td>Jonathan Girwar-Nath, Saurel Cerome "
+                                 + "  </tr>"
+                                 + "  <tr>"
+                                 + "     <td>Thomas Sclichler, Alexander Infante "
+                                 + "  </tr>"
+                                 + "</table><br>"
+                                 + "<strong>Version:</strong> 1.1 <br><br>" 
+                                 + "<strong>Description:</strong>  This program is to search a local drive<br>"
+                                 + "for a specific file and then index the files contents.<br><br>"
+                                 + "Tampa, Fl  02/2016"
+                                 + "</html>";
+
+        private final ImageIcon aboutIcn;  
+    private FocusListener l;
+        
+        
+
 	
+        @SuppressWarnings("empty-statement")
 	public SearchEngine()
 	{
 		JPanel main = new JPanel();
@@ -55,6 +78,7 @@ class SearchEngine extends JPanel implements ActionListener
 		second.add(searchLbl);
 		second.add(Box.createHorizontalStrut(10));
 		schTxt = new JTextField();
+                schTxt.addFocusListener(l);
 		second.add(schTxt);
 		second.add(Box.createHorizontalStrut(10));
 		schBtn = new JButton("Search");
@@ -103,6 +127,7 @@ class SearchEngine extends JPanel implements ActionListener
 		main.add(ftb);
 		
 		main.add(Box.createVerticalStrut(10));
+
 		
 		Box sixth = Box.createHorizontalBox();
 		maintenance = new JButton("Maintenance");
@@ -134,6 +159,9 @@ class SearchEngine extends JPanel implements ActionListener
 		seventh.add(Box.createHorizontalGlue());
 		main.add(seventh);
 		
+                //adding icon to the about button
+                this.aboutIcn = new ImageIcon(SearchEngine.class.getResource("/resources/aboutIcn"));
+                
 		add(main);
 		
 		//making use of an anonymous inner class 
@@ -147,10 +175,26 @@ class SearchEngine extends JPanel implements ActionListener
 		 about.addActionListener((ActionEvent a) -> {
                      if(a.getSource() == about)
                      {
-                         JOptionPane.showMessageDialog(null, "About Form soon to come");
+                          JOptionPane.showMessageDialog(null, Authors, "About", JOptionPane.INFORMATION_MESSAGE, aboutIcn);
                      }
                 });      
-			
+                 
+       schTxt.addFocusListener(new FocusListener() {
+
+            @Override
+            public void focusGained(FocusEvent e) {
+                schTxt.setText("");
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                 
+                Font font = new Font("Serif", Font.BOLD, 15);
+                schTxt.setFont(font);
+                schTxt.setText("Search here");
+            }
+        });
+		              
 	}
 	
         @Override
@@ -170,8 +214,14 @@ class SearchEngine extends JPanel implements ActionListener
 			{
 				JOptionPane.showMessageDialog(null, "exact search");
 			}
-		}
-				
-	}
+
+                }  
+        }      
+     
+        
 }
+		
+        
+	
+
 
