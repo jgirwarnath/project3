@@ -202,7 +202,7 @@ class SearchEngine extends JPanel implements ActionListener
                 
                 schTxt.setFont(font);
                 schTxt.setText("Search here");
-            }
+                    }
         });
 		              
 	}
