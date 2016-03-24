@@ -16,10 +16,13 @@ class Main extends JFrame
 {
         static JFrame searchFrame;
         static JFrame maintenanceFrame;
-	 
-	
+	//ImageIcon img;
+  
+        
         public Main()
 	{
+        //this.img = new ImageIcon(Main.class.getResource("/resources/Icon"));
+            
         searchFrame = new JFrame();
         searchFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         SearchEngine se = new SearchEngine();
@@ -34,10 +37,14 @@ class Main extends JFrame
         Maintenance me = new Maintenance();
         maintenanceFrame.add(me);
         maintenanceFrame.setSize(600, 440);
-        maintenanceFrame.pack();
+        //maintenanceFrame.pack();     //for some reason this kept causing my frames not to close on exit
         maintenanceFrame.setLocationRelativeTo(null);
         maintenanceFrame.setVisible(false);
-            
+//            
+//        //changing image located on JFrame
+//        this.img = new ImageIcon(Main.class.getResource("/resources/Icon"));
+//        searchFrame.setIconImage(img.getImage());
+//        maintenanceFrame.setIconImage(img.getImage());  
             
         }
         
