@@ -55,10 +55,15 @@ public class ActionHandler
     }
     
     public void removeFileRow()
-    {
-        //JOptionPane.showMessageDialog(null, "No files to remove", "Warning", JOptionPane.WARNING_MESSAGE);   
+    { 
         DefaultTableModel remove = (DefaultTableModel) Maintenance.table.getModel();
+        if(Maintenance.table.getRowCount()  == 0)
+        {
+           JOptionPane.showMessageDialog(null, "No files to remove", "Warning", JOptionPane.WARNING_MESSAGE);  
+        }
+        else{      
         remove.removeRow(Maintenance.table.getSelectedRow());
+        }
     }
     
     // This method will save all indexed files to JTable which can later
