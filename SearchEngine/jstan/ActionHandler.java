@@ -22,6 +22,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ActionHandler
 {
+    static int ID = 0;
     String index = "Indexed";
     DefaultTableModel dtm;
     BufferedWriter writer;
@@ -64,13 +65,17 @@ public class ActionHandler
     {
         try {
 
-            toFile = new FileWriter("D:\JavaProj3\project3\SearchEngine\resources\\JTableSaveInfo.txt", true);
+            toFile = new FileWriter("D:\\JavaSearchEngine\\part3\\SearchEngine\\resources\\JTableSaveInfo.txt", true);
 
             for(int row = 0; row < Maintenance.table.getRowCount(); row++)
             {
+                ID++;
+                toFile.write(String.valueOf(ID));
+                toFile.write("\t");
+                    
                 for(int col = 0; col < Maintenance.table.getColumnCount(); col++)
                 {
-                     toFile.write(Maintenance.table.getValueAt(row, col).toString()+"\t");
+                    toFile.write(Maintenance.table.getValueAt(row, col).toString()+"\t");
                 }
                toFile.write("\n");
             }
