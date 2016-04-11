@@ -31,6 +31,7 @@ import javax.swing.table.DefaultTableModel;
 public class ActionHandler
 {
     private Object[][] fileList;
+    private String line = null;
     static int ID = 0;
     String index = "Indexed";
     DefaultTableModel dtm;
@@ -80,13 +81,16 @@ public class ActionHandler
     // be loaded into JTable.
     public void saveJTable()
     {
- 
         try {
 
             toFile = new FileWriter("D:\\JavaSearchEngine\\part3\\SearchEngine\\resources\\JTableSaveInfo.txt", true);
             
             for(int row = 0; row < Maintenance.table.getRowCount(); row++)
-            {                   
+            {   
+                ID++;
+                toFile.write(String.valueOf(ID));
+                toFile.write("\t");
+                
                 for(int col = 0; col < Maintenance.table.getColumnCount(); col++)
                 {
                     toFile.write(Maintenance.table.getValueAt(row, col).toString()+"\t");
@@ -102,21 +106,25 @@ public class ActionHandler
     
    public void loadJTable()
     {
+        final String FILE_END = "endOfFiles";
+        List<String> list = new ArrayList<>();
         DefaultTableModel loadTable = (DefaultTableModel) Maintenance.table.getModel();
-        String line = null;
+        
         //trying out how this works
         try (BufferedReader br = Files.newBufferedReader(Paths.get("D:\\JavaSearchEngine\\part3\\SearchEngine\\resources\\JTableSaveInfo.txt"))) {
             
             br.readLine();
             br.readLine();
-            while( (line = br.readLine() ) != null ) {
-                        loadTable.addRow( line.split("\t") );
+            br.readLine();
+            while(!(line = br.readLine()).equals(FILE_END) ) 
+            {
+                String[] seperate = line.split("\t");
+                loadTable.addRow(new Object[]{seperate[1], seperate[2]});
             }
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-       
     }
 }
 
