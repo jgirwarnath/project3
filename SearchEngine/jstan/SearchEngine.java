@@ -12,6 +12,9 @@ import java.awt.*;
 import java.util.Date;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 /**
  *
  * @author thomas
@@ -19,14 +22,14 @@ import javax.swing.border.Border;
 class SearchEngine extends JPanel implements ActionListener
 {
 	private final JLabel titleLbl, searchLbl, dateLbl, indexLbl;
-	private final JTextField schTxt;
-	private final JTextArea appTxt;
+	static JTextField schTxt;
 	private final JButton schBtn, maintenance, about;
 	private final JRadioButton allSearch, anySearch, exactSearch;
 	private final String allString = ("All of the Search Terms");
 	private final String anyString = ("Any of the Search Terms");
 	private final String exactString = ("Exact Phrase");
 	private final Border dateBorder, indexBorder;
+        static JTable searchTable;
 	
 	
 	public SearchEngine()
@@ -98,8 +101,16 @@ class SearchEngine extends JPanel implements ActionListener
 		main.add(Box.createVerticalStrut(10));
 		
 		Box ftb = Box.createHorizontalBox();
-		appTxt = new JTextArea(15, 50);
-		ftb.add(appTxt);
+                searchTable = new JTable(0, 1);
+                JTableHeader th1 = searchTable.getTableHeader();
+                TableColumnModel tcm = th1.getColumnModel();
+                TableColumn tc = tcm.getColumn(0);
+                tc.setHeaderValue("Matching Files");
+                th1.repaint();
+                JScrollPane jsp = new JScrollPane(searchTable);
+                jsp.getViewport().setBackground(Color.WHITE);
+                jsp.setPreferredSize(new Dimension(300, 200));
+		ftb.add(jsp);
 		main.add(ftb);
 		
 		main.add(Box.createVerticalStrut(10));
@@ -164,7 +175,8 @@ class SearchEngine extends JPanel implements ActionListener
 			}
 			else if(anySearch.isSelected())
 			{
-				JOptionPane.showMessageDialog(null, "any search");
+				OrSearching sh = new OrSearching();
+                                sh.outPut();
 			}
 			else if(exactSearch.isSelected())
 			{
