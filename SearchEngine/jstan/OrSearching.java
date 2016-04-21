@@ -5,7 +5,7 @@
  */
 package jstan;
 
-import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,6 +17,8 @@ public class OrSearching
     
     public void outPut()
     {
-          System.out.println(wordsToSearch);
+        DefaultTableModel searchedFiles = (DefaultTableModel) SearchEngine.searchTable.getModel();
+        searchedFiles.addRow(new String [] {wordsToSearch});
+        System.out.println(wordsToSearch);
     }
 }
