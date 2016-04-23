@@ -72,6 +72,30 @@ public class ActionHandler
         }
     }
     
+    //update files that have changed since the last index and add the time that it was updated.
+    public void rebuildFile()
+    {
+        dtm = (DefaultTableModel) Maintenance.table.getModel();
+        if (dtm.getRowCount() ==0)
+        {   
+            //throw message if there are no files to update
+            JOptionPane.showMessageDialog(null, "There are no files to update.");           
+        }
+        else
+        {
+            //check files in jtable against files in the system
+            
+            //if there different remove file and update with new file
+             JFileChooser fileChooser = new JFileChooser();
+            File selectedFile = fileChooser.getSelectedFile(); 
+            System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+            dtm.addRow(new Object[]{selectedFile.getAbsoluteFile(), index});
+            
+            saveJTable();
+        }
+    }
+    
+    
     // This method will save all indexed files to JTable which can later
     // be loaded into JTable.
     public void saveJTable()
