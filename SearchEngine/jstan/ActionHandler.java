@@ -54,14 +54,22 @@ public class ActionHandler
         }
     }
     
+    //removes file from the JTable in maintenance screen
+    
     public void removeFileRow()
     {
-        //removes file from the JTable in maintenance screen
-        JFileChooser fileChooser = new JFileChooser();
-        File selectedFile = fileChooser.getSelectedFile();
         dtm = (DefaultTableModel) Maintenance.table.getModel();
-        dtm.removeRow(0);
-        
+
+        if (dtm.getRowCount() ==0)
+        {   
+            //throw message if there are no files to remove
+            JOptionPane.showMessageDialog(null, "There are no files to remove");           
+        }
+        else
+        {
+            //remove file starting at the top
+            dtm.removeRow(0);
+        }
     }
     
     // This method will save all indexed files to JTable which can later
