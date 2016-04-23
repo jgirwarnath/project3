@@ -16,6 +16,11 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.io.BufferedReader;
+import java.nio.file.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -58,17 +63,15 @@ public class ActionHandler
     
     public void removeFileRow()
     {
-        dtm = (DefaultTableModel) Maintenance.table.getModel();
 
-        if (dtm.getRowCount() ==0)
-        {   
-            //throw message if there are no files to remove
-            JOptionPane.showMessageDialog(null, "There are no files to remove");           
-        }
-        else
+        DefaultTableModel remove = (DefaultTableModel) Maintenance.table.getModel();
+        if(Maintenance.table.getRowCount() == 0)
         {
-            //remove file starting at the top
-            dtm.removeRow(0);
+           JOptionPane.showMessageDialog(null, "No files to remove", "Warning", JOptionPane.WARNING_MESSAGE);  
+        }
+        else{      
+            
+            remove.removeRow(Maintenance.table.getSelectedRow());
         }
     }
     
@@ -119,8 +122,28 @@ public class ActionHandler
                 }
     }
     
-   public void loadJTable()
+    public void loadJTable()
     {
-       
+        final String FILE_END = "endOfFiles";
+        List<String> list = new ArrayList<>();
+        DefaultTableModel loadTable = (DefaultTableModel) Maintenance.table.getModel();
+        
+        //trying out how this works
+        try (BufferedReader br = Files.newBufferedReader(Paths.get("D:\\JavaSearchEngine\\part3\\SearchEngine\\resources\\JTableSaveInfo.txt"))) {
+            
+            br.readLine();
+            br.readLine();
+            br.readLine();
+            String line;
+            while(!(line = br.readLine()).equals(FILE_END) ) 
+            {
+                String[] seperate = line.split("\t");
+                loadTable.addRow(new Object[]{seperate[1], seperate[2]});
+            }
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
 }
+
