@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -55,7 +56,12 @@ public class ActionHandler
     
     public void removeFileRow()
     {
-        JOptionPane.showMessageDialog(null, "No files to remove", "Warning", JOptionPane.WARNING_MESSAGE);     
+        //removes file from the JTable in maintenance screen
+        JFileChooser fileChooser = new JFileChooser();
+        File selectedFile = fileChooser.getSelectedFile();
+        dtm = (DefaultTableModel) Maintenance.table.getModel();
+        dtm.removeRow(0);
+        
     }
     
     // This method will save all indexed files to JTable which can later
