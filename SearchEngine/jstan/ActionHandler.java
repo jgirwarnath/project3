@@ -4,22 +4,17 @@
  
 package jstan;
 
-import java.util.List;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -71,8 +66,7 @@ public class ActionHandler
         {
            JOptionPane.showMessageDialog(null, "No files to remove", "Warning", JOptionPane.WARNING_MESSAGE);  
         }
-        else{      
-            
+        else{                 
             remove.removeRow(Maintenance.table.getSelectedRow());
         }
     }
@@ -107,12 +101,10 @@ public class ActionHandler
    public void loadJTable()
     {
         final String FILE_END = "endOfFiles";
-        List<String> list = new ArrayList<>();
-        DefaultTableModel loadTable = (DefaultTableModel) Maintenance.table.getModel();
-        
+        DefaultTableModel loadTable = (DefaultTableModel) Maintenance.table.getModel();        
         //trying out how this works
         try (BufferedReader br = Files.newBufferedReader(Paths.get("D:\\JavaSearchEngine\\part3\\SearchEngine\\resources\\JTableSaveInfo.txt"))) {
-            
+            //I used this to skip the first 3 lines in the file
             br.readLine();
             br.readLine();
             br.readLine();
@@ -121,10 +113,10 @@ public class ActionHandler
                 String[] seperate = line.split("\t");
                 loadTable.addRow(new Object[]{seperate[1], seperate[2]});
             }
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+            
+	} catch (IOException e) {
+            e.printStackTrace();
+	}
     }
 }
 
