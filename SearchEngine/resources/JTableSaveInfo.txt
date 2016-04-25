@@ -1,2 +1,12 @@
-C:\Users\thomas\Desktop\DetailedDesign.docx	Indexed	
-C:\Users\thomas\.oracle_jre_usage\90737d32e3aba67.timestamp	Indexed	
+Search Engine Version 1.0
+0
+	
+1	C:\Users\thomas\.netbeans-derby\sample\seg0\c2d0.dat	Indexed	
+2	C:\Users\thomas\.netbeans-derby\sample\seg0\c2d0.dat	Indexed	
+3	C:\Users\thomas\.p2\pools.info	Indexed	
+4	C:\Users\thomas\.netbeans-derby\sample\seg0\c2d0.dat	Indexed	
+5	C:\Users\thomas\.p2\pools.info	Indexed	
+6	C:\Users\thomas\3D Objects\Sphere Shape.3mf	Indexed	
+1	C:\Users\thomas\.tooling\gradle\versions.json	Indexed	
+1	C:\Users\thomas\.xngr\text-preferences.xngr-editor-v33.xml	Indexed	
+endOfFiles

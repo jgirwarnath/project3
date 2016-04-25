@@ -111,7 +111,9 @@ public class Maintenance extends JPanel implements ActionListener
 		}
                 else if(ae.getSource() == rebuild)
                 {
-                    JOptionPane.showMessageDialog(null, "This button will rebuild out of date files"); 
+                    //JOptionPane.showMessageDialog(null, "This button will rebuild out of date files"); 
+                    ActionHandler ah = new ActionHandler();
+                    ah.loadJTable();
                 }
                 else if(ae.getSource() == remove)
                 {
