@@ -57,9 +57,10 @@ public class ActionHandler
             dtm.addRow(new Object[]{selectedFile.getAbsoluteFile(), index});
             
             saveJTable();
+
             
         }
-        idxCnt++;
+        
     }
     
     //removes file from the JTable in maintenance screen
@@ -75,8 +76,9 @@ public class ActionHandler
         else{      
             
             remove.removeRow(Maintenance.table.getSelectedRow());
+
         }
-        idxCnt--;
+        
     }
     
     //update files that have changed since the last index and add the time that it was updated.
