@@ -5,39 +5,35 @@
  */
 package jstan;
 
-import java.io.*;
-import java.util.*;
-import javax.swing.*;
+
+import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
  * @author alexanderinfante
  */
-public class ExactSearch  extends JPanel 
+public class ExactSearch
 {
 
-   ExactSearch() throws FileNotFoundException{
-            
-      
-      
-      int lnCnt = 0;
-      
-      //read file in and save as hashmap
-      Scanner in = new Scanner(new FileReader("/resources/JTableSaveInfo.txt"));    
-      Map<String, String> map = new HashMap<>();
-      
-      while (in.hasNextLine() )
-      {
-          lnCnt ++;
-          String[] columns;
-          columns = in.nextLine().split("/n");
-          map.put(columns[0], columns[1]);
-          
-      }
-       
-      JOptionPane.showMessageDialog(null, map.toString());
+   
+
+
+
+    public String outPut()
+    {
+        //get phrase to search for
+        String wordToSearch = SearchEngine.schTxt.getText();
         
+        //gets information to search for and writes it to the JTable on search engine
+        DefaultTableModel searchedFiles = (DefaultTableModel) SearchEngine.searchTable.getModel();
+        searchedFiles.addRow(new String [] {wordToSearch});
+  
+       return (wordToSearch);
+       
     }
+        
+    
 
     
     
