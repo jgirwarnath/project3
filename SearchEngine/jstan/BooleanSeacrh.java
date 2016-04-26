@@ -16,4 +16,7 @@ public class BooleanSeacrh {
     //this class should handle the searching aspect of the program.
     
     //"and", "or", and "exact phrase"
+    
+
+    
 }
