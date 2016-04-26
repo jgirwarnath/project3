@@ -89,7 +89,7 @@ public class Maintenance extends JPanel implements ActionListener
             reset.addActionListener(this);
             five.add(Box.createHorizontalGlue());
             
-            indxLbl = new JLabel("Number of index's on file: " + ActionHandler.idxCnt);
+            indxLbl = new JLabel("Number of index's on file: ");
             five.add(indxLbl);
             five.add(Box.createHorizontalGlue());
             
