@@ -9,8 +9,9 @@ package jstan;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.Date;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
@@ -194,7 +195,7 @@ class SearchEngine extends JPanel implements ActionListener
 		
 		seventh.add(Box.createHorizontalStrut(280));
 		indexBorder = BorderFactory.createLoweredBevelBorder();
-		indexLbl = new JLabel("Number of index's on file: ");
+		indexLbl = new JLabel("Number of index's on file: " + ActionHandler.idxCnt);
 		seventh.add(indexLbl);
 		indexLbl.setBorder(indexBorder);
 		seventh.add(Box.createHorizontalGlue());
@@ -275,17 +276,15 @@ class SearchEngine extends JPanel implements ActionListener
 			{       
                                 //prints out to the JTable from whats returned from search engine class
 				ExactSearch es = new ExactSearch();
-                                DefaultTableModel searchedFiles = (DefaultTableModel) SearchEngine.searchTable.getModel();
-                                searchedFiles.addRow(new String [] {es.outPut()});
+                                es.outPut();
                                 
                                 
 			}
                
                 }  
-        }      
+        }
+}     
      
-        
-}
 		
         
 	
