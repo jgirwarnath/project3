@@ -14,9 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
 import java.io.BufferedReader;
 import java.nio.file.*;
 import java.util.ArrayList;
@@ -35,6 +33,9 @@ public class ActionHandler
     FileWriter toFile;
     ObjectOutputStream obj;
     ObjectInputStream objIn;
+    //count for the indexed number
+    static int idxCnt = 0;
+    
     
     // the addFile() will handle adding all files to JTable
     @SuppressWarnings("empty-statement")
@@ -56,7 +57,9 @@ public class ActionHandler
             dtm.addRow(new Object[]{selectedFile.getAbsoluteFile(), index});
             
             saveJTable();
+            
         }
+        idxCnt++;
     }
     
     //removes file from the JTable in maintenance screen
@@ -73,6 +76,7 @@ public class ActionHandler
             
             remove.removeRow(Maintenance.table.getSelectedRow());
         }
+        idxCnt--;
     }
     
     //update files that have changed since the last index and add the time that it was updated.
