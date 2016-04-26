@@ -9,24 +9,36 @@ package jstan;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
+import java.io.FileNotFoundException;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 /**
  *
  * @author thomas
  */
 class SearchEngine extends JPanel implements ActionListener
 {
+
+        static String s;
 	private final JLabel titleLbl, searchLbl, dateLbl, indexLbl;
-	private JTextField schTxt;
-	private final JTextArea appTxt;
+	public static JTextField schTxt;
+	//private final JTextArea appTxt;
 	private final JButton schBtn, maintenance, about;
 	private final JRadioButton allSearch, anySearch, exactSearch;
 	private final String allString = ("All of the Search Terms");
 	private final String anyString = ("Any of the Search Terms");
 	private final String exactString = ("Exact Phrase");
 	private final Border dateBorder, indexBorder;
+        static JTable searchTable;
+        
+
         
         
         Font font = new Font("Serif", Font.BOLD, 15);
@@ -124,11 +136,37 @@ class SearchEngine extends JPanel implements ActionListener
 		
 		main.add(Box.createVerticalStrut(10));
 		
+//		Box ftb = Box.createHorizontalBox();
+//		appTxt = new JTextArea(15, 50);
+//		ftb.add(appTxt);
+//		main.add(ftb);
+		
+
+		
 		Box ftb = Box.createHorizontalBox();
-		appTxt = new JTextArea(15, 50);
-		ftb.add(appTxt);
+                searchTable = new JTable(0, 1);
+                JTableHeader th1 = searchTable.getTableHeader();
+                TableColumnModel tcm = th1.getColumnModel();
+                TableColumn tc = tcm.getColumn(0);
+                tc.setHeaderValue("Matching Files");
+                th1.repaint();
+                JScrollPane jsp = new JScrollPane(searchTable);
+                jsp.getViewport().setBackground(Color.WHITE);
+                jsp.setPreferredSize(new Dimension(300, 200));
+		ftb.add(jsp);
 		main.add(ftb);
 		
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
 		main.add(Box.createVerticalStrut(10));
 
 		
@@ -185,34 +223,47 @@ class SearchEngine extends JPanel implements ActionListener
   
             //setting the search text and button tied together
             
-            schTxt.addFocusListener(new FocusListener() {
-
-            @Override
-            public void focusGained(FocusEvent e) {
-                schTxt.setText("");
-                    schBtn.setEnabled(true);
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
+//            schTxt.addFocusListener(new FocusListener() {
+//
+//            @Override
+//            public void focusGained(FocusEvent e) {
+//                
+//                if( schTxt.toString().length() == 0 || !schTxt.equals("Search Here"))
+//                {   
+//                    schTxt.setText("");
+//                    schBtn.setEnabled(true);
+//                }
+//                    else
+//                {
+//                    schBtn.setEnabled(true);
+//                }
+//                    
+//            
+//            }
+//
+//            @Override
+//            public void focusLost(FocusEvent e) {
+//            
+//                schBtn.setEnabled(false);
+//                
+//                //i cant seem to change the color of the textField
+//                
+//                schTxt.setFont(new Font("Courier New", Font.ITALIC, 12) );
+//                schTxt.setForeground (Color.GRAY);
+//                schTxt.setText("Search here");
+//                 }
+//            
             
-                schBtn.setEnabled(false);
-                
-                //i cant seem to change the color of the textField
-                
-                schTxt.setFont(font);
-                schTxt.setText("Search here");
-                    }
-        });
+//        });
 		              
-	}
+        }
 	
         @Override
 	public void actionPerformed(ActionEvent ae)
 	{
 		if(ae.getSource() == schBtn)
 		{
-			if(allSearch.isSelected())
+                    if(allSearch.isSelected())
 			{
 				JOptionPane.showMessageDialog(null, "all search");
 			}
@@ -221,10 +272,15 @@ class SearchEngine extends JPanel implements ActionListener
 				JOptionPane.showMessageDialog(null, "any search");
 			}
 			else if(exactSearch.isSelected())
-			{
-				JOptionPane.showMessageDialog(null, "exact search");
+			{       
+                                //prints out to the JTable from whats returned from search engine class
+				ExactSearch es = new ExactSearch();
+                                DefaultTableModel searchedFiles = (DefaultTableModel) SearchEngine.searchTable.getModel();
+                                searchedFiles.addRow(new String [] {es.outPut()});
+                                
+                                
 			}
-
+               
                 }  
         }      
      
