@@ -89,7 +89,7 @@ public class Maintenance extends JPanel implements ActionListener
             reset.addActionListener(this);
             five.add(Box.createHorizontalGlue());
             
-            indxLbl = new JLabel("Number of index's on file: ");
+            indxLbl = new JLabel("Number of index's on file: " + ActionHandler.idxCnt);
             five.add(indxLbl);
             five.add(Box.createHorizontalGlue());
             
@@ -111,7 +111,9 @@ public class Maintenance extends JPanel implements ActionListener
 		}
                 else if(ae.getSource() == rebuild)
                 {
-                    JOptionPane.showMessageDialog(null, "This button will rebuild out of date files"); 
+                    ActionHandler rb = new ActionHandler();
+                    rb.rebuildFile();
+                    
                 }
                 else if(ae.getSource() == remove)
                 {
