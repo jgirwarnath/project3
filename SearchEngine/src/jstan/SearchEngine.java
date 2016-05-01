@@ -6,8 +6,8 @@
 package jstan;
 
 /**
- *
- * @author Saurel
+ *this class create the second JFrame with a JTable to search for  terms
+ * @author Saurel Cerome, Jonathan Girwar-Nath, Thomas Schlicher, Alex Infante
  * 
  */
 
@@ -147,6 +147,7 @@ public class SearchEngine implements ActionListener{
 		indexFiles.setText("Indexed: "+table.getRowCount());}
 	
 //action perform buttons in the maintenance gui
+        //this method controls all the action performs in the search table
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -171,7 +172,7 @@ public class SearchEngine implements ActionListener{
 			if(e.getSource() == search){
 			
 				if(allSearch.isSelected()){
-					Javan.containedItems(c);
+					//Javan.containedItems(c);
 					try {
 						Maintenance.fileReader();
 					} catch (IOException e1) {
@@ -183,14 +184,15 @@ public class SearchEngine implements ActionListener{
 			else if(anyTerm.isSelected()){
 			
 					for (String k : c) {
+                                          
 						
 						jTable(k);
-						
+						Maintenance.JTable(k);
 						}
 					}
 				
 			else if(exactTerm.isSelected()){
-				//JOptionPane.showMessageDialog(null, "exact search");
+				JOptionPane.showMessageDialog(null, "exact search");
 			}
 				
 		}
@@ -205,7 +207,7 @@ public class SearchEngine implements ActionListener{
 	 
 	
 }
-
+//the maintenance class action perform method
 class MaintenanceAction implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e){
@@ -215,7 +217,7 @@ class MaintenanceAction implements ActionListener{
 	}
 }
 
-
+//this class calls the abouts class
 class AboutsC implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e){
