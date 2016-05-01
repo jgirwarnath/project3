@@ -8,6 +8,7 @@ package jstan;
 /**
  *
  * @author JSTAN
+ * Saurel Cerome, Jonathan Girwar-Nath, Thomas Schlicher, Alex Infante
  */
 //this class is the about method that shows about us page
 import java.awt.EventQueue;

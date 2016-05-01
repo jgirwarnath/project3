@@ -7,7 +7,7 @@ package jstan;
 
 /**
  *
- * @author Saurel
+ * @author Saurel Cerome, Jonathan Girwar-Nath, Thomas Schlicher, Alex Infante
  */
 import java.awt.List;
 import java.io.BufferedReader;
