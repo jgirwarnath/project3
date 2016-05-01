@@ -3,6 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+// Written by jstan, Tampa Florida USA
 package jstan;
 
 /**
@@ -196,7 +198,9 @@ public class Maintenance implements ActionListener {
 		}
 	       
 	}
-	
+	// buffer reader method 
+        //dont really need this method
+        //this method will read the file and print the result on the console
 	public static void bufferReader() throws IOException{
 		   BufferedReader buf = new BufferedReader(new FileReader(PATH));
 		   String readText;
@@ -210,7 +214,8 @@ public class Maintenance implements ActionListener {
 
 	   }
 	
-	
+	//dont really need this method
+        //this method will read the file and print the result on the console
 	public static void fileReader() throws IOException{
 		FileReader file = new FileReader(PATH);
 		BufferedReader reader = new BufferedReader(file);
@@ -227,58 +232,29 @@ public class Maintenance implements ActionListener {
 	
 	
 	
-	
-	
 
 	
-	
-	
-	/*
-	
-	
-private static boolean fileAdded(String file) {
-		
-		if ( userFiles.isEmpty() == false ) {
-			Iterator<String> iterate = userFiles.iterator();
-			while ( iterate.hasNext() ) {
-				String next = iterate.next();
-				if ( next.contains(file) ) {
-					return true;
-				}
-			}
-		}
-		
-		
-		return false;
-	}
-	
-	
-	*/
-	
-	
-	
-	
-	
 
-	
+	//this method will index the files
 	public  void index (File file) {
 		itemsAdded = file.getPath() + index + indexed[0]  ;
 		userFiles.add(itemsAdded);
 		getFiles(itemsAdded);
 		
 	}
+        //this method will get the files and add them to the JTable
 	public static void getFiles(String files) {
 		 String separator = ",";
 		( (DefaultTableModel) Maintenance.table.getModel() ).addRow(files.split(separator));
 	}
 	
 
-	/*
-		public static void AddToTable(String data) {
+	
+		public static void JTable(String data) {
 			// Add the file info to the JTable
 			( (DefaultTableModel) SearchEngine.table.getModel() ).addRow(data.split(DELIMITER));
 		}
-	 */
+	 
 	
 	
 }

@@ -3,11 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+//this class is the main class that has the main method
+
+// This program is designed to provide a user with a comfortable
+// graphical user interface in which they can easly navigate.
+// It will allow searching of files, removing files and the
+// adding of files.
 package jstan;
 
 /**
  *
- * @author Saurel
+ * @author JSTAN
+ *  Written by jstan, Tampa Florida USA
  */
 
 import java.io.FileInputStream;

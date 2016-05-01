@@ -7,8 +7,9 @@ package jstan;
 
 /**
  *
- * @author Saurel
+ * @author JSTAN
  */
+//this class is the about method that shows about us page
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -25,6 +26,7 @@ public class Abouts {
 		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+                //creating the labels in the about the method
 		JLabel lblNewLabel = new JLabel("Javans Search Engine 1.1");
 		lblNewLabel.setBounds(98, 44, 180, 26);
 		frame.getContentPane().add(lblNewLabel);
@@ -33,24 +35,24 @@ public class Abouts {
 		lblNewLabel_1.setBounds(98, 67, 228, 26);
 		frame.getContentPane().add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("Written by the Javans:");
+		JLabel lblNewLabel_2 = new JLabel("Created by The JSTAN Group:");
 		lblNewLabel_2.setBounds(98, 91, 166, 26);
 		frame.getContentPane().add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_3 = new JLabel("Thomas");
-		lblNewLabel_3.setBounds(98, 117, 80, 14);
+		JLabel lblNewLabel_3 = new JLabel("Thomas Schlicher");
+		lblNewLabel_3.setBounds(98, 117, 120, 30);
 		frame.getContentPane().add(lblNewLabel_3);
 		
-		JLabel lblNewLabel_4 = new JLabel("Alex");
-		lblNewLabel_4.setBounds(98, 142, 80, 14);
+		JLabel lblNewLabel_4 = new JLabel("Alex Infante");
+		lblNewLabel_4.setBounds(98, 142, 100, 30);
 		frame.getContentPane().add(lblNewLabel_4);
 		
-		JLabel lblNewLabel_5 = new JLabel("Jonathan");
-		lblNewLabel_5.setBounds(98, 167, 80, 14);
+		JLabel lblNewLabel_5 = new JLabel("Jonathan Girwar-Nath");
+		lblNewLabel_5.setBounds(98, 167, 130, 30);
 		frame.getContentPane().add(lblNewLabel_5);
 		
-		JLabel lblNewLabel_6 = new JLabel("Saurel");
-		lblNewLabel_6.setBounds(98, 192, 80, 14);
+		JLabel lblNewLabel_6 = new JLabel("Saurel Cerome");
+		lblNewLabel_6.setBounds(98, 192, 100, 30);
 		frame.getContentPane().add(lblNewLabel_6);
 	}
 }

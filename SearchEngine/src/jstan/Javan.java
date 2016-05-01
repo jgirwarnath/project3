@@ -119,7 +119,8 @@ public void newM(){
 	
 	 
 
- 
+ //this method will check to see in the term is in the file
+ //all term search
  public static  Javan containedItems(String[] keys) {
 		
 		boolean inThere = false;
