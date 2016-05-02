@@ -3,9 +3,17 @@
 // It will allow searching of files, removing files and the
 // adding of files.
 //
-// Written 02/16/2015 by jstan, Tampa Florida USA
+// Written 04/16/2016 by jstan, Tampa Florida USA
 package jstan;
 
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.SwingUtilities;
 /**
@@ -16,10 +24,13 @@ class Main extends JFrame
 {
         static JFrame searchFrame;
         static JFrame maintenanceFrame;
-	 
-	
+	ImageIcon img;
+  
+        
         public Main()
 	{
+        this.img = new ImageIcon(Main.class.getResource("/resources/Icon"));
+            
         searchFrame = new JFrame();
         searchFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         SearchEngine se = new SearchEngine();
@@ -34,11 +45,18 @@ class Main extends JFrame
         Maintenance me = new Maintenance();
         maintenanceFrame.add(me);
         maintenanceFrame.setSize(600, 440);
-        maintenanceFrame.pack();
+        //maintenanceFrame.pack();     //for some reason this kept causing my frames not to close on exit
         maintenanceFrame.setLocationRelativeTo(null);
         maintenanceFrame.setVisible(false);
             
+        //changing image located on JFrame
+        this.img = new ImageIcon(Main.class.getResource("/resources/Icon"));
+        searchFrame.setIconImage(img.getImage());
+        maintenanceFrame.setIconImage(img.getImage());  
             
+         
+
+        
         }
         
     public static void main(String[] args) 
@@ -47,7 +65,16 @@ class Main extends JFrame
             Main mm = new Main();
         });
     }
+    
+    
+    
+
+    
 }
+
+
+
+
 	//the part below was free floating inside the main class,
 	//if we are to use this it should be in a method within the
 	//appropriate class.
