@@ -4,7 +4,7 @@
 // used to allow the user access data easier while knowing what
 // something does.
 //
-// Written 02/16/2015 by jstan, Tampa Florida USA
+// Written 04/16/2016 by jstan, Tampa Florida USA
 package jstan;
 import javax.swing.table.*;
 import javax.swing.*;
@@ -111,7 +111,9 @@ public class Maintenance extends JPanel implements ActionListener
 		}
                 else if(ae.getSource() == rebuild)
                 {
-                    JOptionPane.showMessageDialog(null, "This button will rebuild out of date files"); 
+                    ActionHandler rb = new ActionHandler();
+                    rb.rebuildFile();
+                    
                 }
                 else if(ae.getSource() == remove)
                 {
